@@ -33,5 +33,5 @@ CREATE TABLE `tbl_estudiantes` (
   `situacion_se` varchar(2000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
-ALTER TABLE `estudiantes`
+ALTER TABLE `tbl_estudiantes`
   ADD UNIQUE KEY `n_documento` (`n_documento`);
