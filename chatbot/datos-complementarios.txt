@@ -1,0 +1,6 @@
+Fecha: 2025-09-28 01:57:15 | Fecha_nacimiento: 2025-09-03 | Genero: masculino | Direccion: calle | Ciudad: sogamoso | 
+Fecha: 2025-09-28 02:11:58 | Fecha_nacimiento: 2025-09-01 | Genero: masculino | Direccion: calle | Ciudad: sog | 
+Fecha: 2025-09-28 02:51:15 | Fecha_nacimiento: 2025-09-02 | Genero: masculino | Direccion: CALLE | Ciudad: SOG | 
+Fecha: 2025-09-28 03:28:37 | Fecha_nacimiento: 2025-09-10 | Genero: femenino | Direccion: qqq | Ciudad: qqq | 
+Fecha: 2025-09-28 03:44:26 | Fecha_nacimiento: 2025-09-30 | Genero: otro | Direccion: zz | Ciudad: zz | 
+Fecha: 2025-09-28 16:20:56 | Fecha_nacimiento: 2025-09-02 | Genero: masculino | Direccion: a | Ciudad: a | 
