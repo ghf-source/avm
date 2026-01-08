@@ -1,4 +1,4 @@
-DROP TABLE tbl_estudiantes;
+DROP TABLE IF EXISTS tbl_estudiantes;
 
 CREATE TABLE `tbl_estudiantes` (
   `id` int(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
