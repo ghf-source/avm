@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         asistenteFullscreen.style.display = "block";
         document.querySelector(".bot-inicio-inline").style.display = "none";
 
-        agregarMensaje("Unibot", {
+        agregarMensaje("ghfbot", {
             respuesta: "¡Hola! Soy tu asistente de admisiones. Es un gusto asistirlo/a en el proceso.",
             botones: null // No hay botones aquí
         });
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Mostrar menú inicial
         const respuestaCompleta = encontrarIntencion("iniciar admisiones");
         //console.log(respuestaCompleta);
-        agregarMensaje("Unibot", respuestaCompleta);
+        agregarMensaje("ghfbot", respuestaCompleta);
 
         parrafoInicial.innerHTML = "Recuerda que si ya has iniciado el proceso de admisión, después de ingresar el número del documento del estudiante, será dirigido al paso en dónde quedaste por última vez.";
         parrafoInicial.style.color = "#0070C0";
@@ -127,8 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // Mostrar mensaje de bienvenida en chat
-        //agregarMensaje("Unibot", "¡Hola! Soy tu asistente de admisiones. ¿En qué puedo ayudarte?");
-        agregarMensaje("Unibot", {
+        //agregarMensaje("ghfbot", "¡Hola! Soy tu asistente de admisiones. ¿En qué puedo ayudarte?");
+        agregarMensaje("ghfbot", {
             respuesta: "¡Hola! Soy tu asistente de admisiones. ¿En qué puedo ayudarte?",
             botones: null // No hay botones aquí
         });
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Obtener respuesta del bot
         const respuestaCompleta = encontrarIntencion(mensaje);
-        agregarMensaje("Unibot", respuestaCompleta);
+        agregarMensaje("ghfbot", respuestaCompleta);
 
         // Limpiar entrada y hacer scroll
         entradaChat.value = "";
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     respuesta = respuesta + "<ul><li>El nombre del archivo debe tener la siguiente forma <span style='color: #0B77B3;'><strong>documentoEstudiante-añoMatrícula-pp</strong></span></li><li>Ej: <span style='color: #0B77B3;'><strong>9397532-2026-pp</strong></span></li>";
                     respuesta = respuesta + "<li>Y se permiten archivos pdf, png y jpg con un peso máximo de 5MB.</li></ul>";
                 }
-                msg.innerHTML = `<strong>Unibot:</strong> ${respuesta}`;
+                msg.innerHTML = `<strong>ghfbot:</strong> ${respuesta}`;
                 contenedor.appendChild(msg);
             }
 
@@ -251,9 +251,9 @@ document.addEventListener("DOMContentLoaded", () => {
                             // Buscar la intención destino
                             const intencionDestino = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino); //esto busca por etiqueta
                             if (intencionDestino) {
-                                agregarMensaje("Unibot", { ...intencionDestino }); //esto saca una copia de la intencion
+                                agregarMensaje("ghfbot", { ...intencionDestino }); //esto saca una copia de la intencion
                             } else {
-                                agregarMensaje("Unibot", "No se encontró el proceso solicitado.");
+                                agregarMensaje("ghfbot", "No se encontró el proceso solicitado.");
                             }
                         } else if (btn.tipo === "d_pdf" && btn.url) {
                             window.open(btn.url, '_blank');
@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 //const intencion = BASE_INTENCIONES.find(i => i.etiqueta === "documentos_finales_nuevo");
                 //const intencion = BASE_INTENCIONES.find(i => i.etiqueta === "reprogramar_entrevista_nuevo");
                 //const intencion = BASE_INTENCIONES.find(i => i.etiqueta === "evaluacion_admision_ant_nuevo_cd");
-                //if (intencion) agregarMensaje("Unibot", intencion);
+                //if (intencion) agregarMensaje("ghfbot", intencion);
             }
 
             // --- Validar documento ---
@@ -345,7 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
                     // Mostrar mensaje de espera
-                    agregarMensaje("Unibot", contenido.mensaje_espera);
+                    agregarMensaje("ghfbot", contenido.mensaje_espera);
 
                     // Enviar al web service
                     //console.log(JSON.stringify({ documento: documento }));
@@ -378,13 +378,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             if (data.bloqueado == "SI") {
                                 control_matricula = 1;
-                                agregarMensaje("Unibot", "Documento restringido. Por favor comunícate con Rectoría o Secretaría Académica");	
+                                agregarMensaje("ghfbot", "Documento restringido. Por favor comunícate con Rectoría o Secretaría Académica");	
                             }
                             
                             if (control_matricula == 0) {
                                 if (data.mat_ordinaria == "AUN NO") {
                                     control_matricula = 1;
-                                    agregarMensaje("Unibot", "Las matrículas ordinarias van desde el " + data.mat_ordinaria_desde + " hasta el " + data.mat_ordinaria_hasta);
+                                    agregarMensaje("ghfbot", "Las matrículas ordinarias van desde el " + data.mat_ordinaria_desde + " hasta el " + data.mat_ordinaria_hasta);
                                 }
                                 else if (data.mat_ordinaria == "SI") {
                                     control_matricula = 0;
@@ -392,14 +392,14 @@ document.addEventListener("DOMContentLoaded", () => {
                                 else if (data.mat_ordinaria == "NO") {
                                     if(data.mat_extraordinaria == "AUN NO") {
                                         control_matricula = 1;
-                                        agregarMensaje("Unibot", "Las matrículas extraordinarias van desde el " + data.mat_extraordinaria_desde + " hasta el " + data.mat_extraordinaria_hasta);
+                                        agregarMensaje("ghfbot", "Las matrículas extraordinarias van desde el " + data.mat_extraordinaria_desde + " hasta el " + data.mat_extraordinaria_hasta);
                                     }
                                     else if(data.mat_extraordinaria == "SI") {
                                         control_matricula = 0;
                                     }
                                     else if(data.mat_extraordinaria == "NO") {
                                         control_matricula = 1;
-                                        agregarMensaje("Unibot", "Las matrículas extraordinarias van desde el " + data.mat_extraordinaria_desde + " hasta el " + data.mat_extraordinaria_hasta);
+                                        agregarMensaje("ghfbot", "Las matrículas extraordinarias van desde el " + data.mat_extraordinaria_desde + " hasta el " + data.mat_extraordinaria_hasta);
                                     }
                                 }
                             }            		    
@@ -407,7 +407,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             if (control_matricula == 0) {
                                 if (data.control_documentos_invalidos == "1" && data.tipos.length > 0) {
                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === "formulario_final_documentos_invalidos");
-                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                    if (intencion) agregarMensaje("ghfbot", intencion);
 
                                     if (paso == "1.4") {
                                         //imagen con pasos resumen
@@ -461,7 +461,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     }
                                 }
                                 else if (data.control_antiguos == 2) {//Antiguo nuevo
-                                    agregarMensaje("Unibot", "¡Qué gusto tenerte con nostros nuevamente " + data.nombres + " " + data.apellidos + ". Como te ausentaste por más de un año, tu proceso de matrícula es como estudiante <span style='color: blue;'><strong>Nuevo</strong></span>.");
+                                    agregarMensaje("ghfbot", "¡Qué gusto tenerte con nostros nuevamente " + data.nombres + " " + data.apellidos + ". Como te ausentaste por más de un año, tu proceso de matrícula es como estudiante <span style='color: blue;'><strong>Nuevo</strong></span>.");
                                     if(data.deuda_pendiente > 0) {//con deuda
                                         deuda = data.deuda_pendiente;
                                         //imagen con pasos resumen
@@ -475,7 +475,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                                         //Se valida el paso
                                         if (paso == "3.1.1") {
-                                            //agregarMensaje("Unibot", "Nuestro sistema ha detectado que tienes una deuda pendiente por valor de <span style='color: red;'><strong>" + formatoCadenaNumero(data.deuda_pendiente) + "</strong></span>. Para continuar es necesario ponerte al día con la dueda.");
+                                            //agregarMensaje("ghfbot", "Nuestro sistema ha detectado que tienes una deuda pendiente por valor de <span style='color: red;'><strong>" + formatoCadenaNumero(data.deuda_pendiente) + "</strong></span>. Para continuar es necesario ponerte al día con la dueda.");
                                             let respuesta = "Nuestro sistema ha detectado que tienes deuda pendiente por valor de <span style='color: red;'><strong>" + formatoCadenaNumero(data.deuda_pendiente) + "</strong></span> con éste detalle: <ul>";
                                             
                                             if(data.deuda_año_anterior > 0) {
@@ -488,9 +488,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                                 }
                                             }
                                             respuesta += "</ul>Para continuar es necesario ponerte al día con la dueda total." 
-                                            agregarMensaje("Unibot", respuesta);
+                                            agregarMensaje("ghfbot", respuesta);
 
-                                            /*agregarMensaje("Unibot", {
+                                            /*agregarMensaje("ghfbot", {
                                                 respuesta: "Nuestro sistema ha detectado que tienes una deuda pendiente por valor de <span style='color: red;'><strong>$" + Number(data.deuda_pendiente).toLocaleString('es-CO') + "</strong></span>. Para continuar es necesario ponerte al día con la dueda.",
                                                 accion: "mostrar_boton_pagar_deuda",
                                                 boton_pagar_deuda: "Pagar deuda",
@@ -498,14 +498,14 @@ document.addEventListener("DOMContentLoaded", () => {
                                             });*/
                                             //const botonPago = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino); //esto busca por etiqueta
                                             //const botonPago = encontrarIntencion("deuda pendiente"); //esto busca por claves
-                                            //agregarMensaje("Unibot", botonPago);
+                                            //agregarMensaje("ghfbot", botonPago);
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === "valor_dueda_ant_nuevo_cd");
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
                                         }
                                         else if (paso == "3.1.1.1") {
-                                            //agregarMensaje("Unibot", "Nuestro sistema ha detectado que tienes una deuda pendiente por valor de <span style='color: red;'><strong>" + formatoCadenaNumero(data.deuda_pendiente) + "</strong></span>. Para continuar es necesario ponerte al día con la dueda.");
+                                            //agregarMensaje("ghfbot", "Nuestro sistema ha detectado que tienes una deuda pendiente por valor de <span style='color: red;'><strong>" + formatoCadenaNumero(data.deuda_pendiente) + "</strong></span>. Para continuar es necesario ponerte al día con la dueda.");
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
                                         }
                                         else if (paso == "3.1.1.2" && data.validacion_comprobante_deuda == 1) {
                                             //Se consume web service de cambio de paso
@@ -521,7 +521,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     paso = data_cp.siguiente_paso;
                                                     etiqueta_intencion = data_cp.etiqueta_intencion;
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
                                             
@@ -536,7 +536,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "3.1.1.2") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -549,7 +549,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "3.2" || paso == "3.2.1") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -574,7 +574,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     paso = data_cp.siguiente_paso;
                                                     etiqueta_intencion = data_cp.etiqueta_intencion;
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
                                             
@@ -589,7 +589,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "3.3") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -618,7 +618,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             
                                                     let intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
                                                     intencion.respuesta = respuesta;
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
 
@@ -636,11 +636,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                             
                                             let intencion = BASE_INTENCIONES.find(i => i.etiqueta === "reprogramar_entrevista_ant_nuevo_cd");
                                             intencion.respuesta = respuesta;
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
                                         }
                                         else if (paso == "3.4") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -656,7 +656,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
                                             intencion.respuesta = respuesta;
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -669,7 +669,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if ((paso == "3.5.1" || paso == "3.5.2") && data.validacion_comprobante_matricula == 0) {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -694,7 +694,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     paso = data_cp.siguiente_paso;
                                                     etiqueta_intencion = data_cp.etiqueta_intencion;
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
                                             
@@ -709,7 +709,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "3.6") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -734,7 +734,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     paso = data_cp.siguiente_paso;
                                                     etiqueta_intencion = data_cp.etiqueta_intencion;
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
 
@@ -749,7 +749,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "3.6.1") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -762,7 +762,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "3.7") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -787,7 +787,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                                         if (paso == "4.1" || paso == "4.2") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -812,7 +812,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     paso = data_cp.siguiente_paso;
                                                     etiqueta_intencion = data_cp.etiqueta_intencion;
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
                                             
@@ -827,7 +827,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "4.3") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -856,7 +856,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             
                                                     let intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
                                                     intencion.respuesta = respuesta;
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
 
@@ -874,11 +874,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                             
                                             let intencion = BASE_INTENCIONES.find(i => i.etiqueta === "reprogramar_entrevista_ant_nuevo_sd");
                                             intencion.respuesta = respuesta;
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
                                         }
                                         else if (paso == "4.4") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -894,7 +894,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
                                             intencion.respuesta = respuesta;
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -907,7 +907,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if ((paso == "4.5.1" || paso == "4.5.2") && data.validacion_comprobante_matricula == 0) {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -932,7 +932,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     paso = data_cp.siguiente_paso;
                                                     etiqueta_intencion = data_cp.etiqueta_intencion;
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
                                             
@@ -947,7 +947,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "4.6") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -972,7 +972,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     paso = data_cp.siguiente_paso;
                                                     etiqueta_intencion = data_cp.etiqueta_intencion;
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
 
@@ -987,7 +987,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "4.6.1") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1000,7 +1000,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "4.7") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1014,7 +1014,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     }
                                 }
                                 else if (data.control_antiguos == 1) {//Antiguo
-                                    agregarMensaje("Unibot", "¡Qué gusto tenerte con nostros nuevamente " + data.nombres + " " + data.apellidos + ".");
+                                    agregarMensaje("ghfbot", "¡Qué gusto tenerte con nostros nuevamente " + data.nombres + " " + data.apellidos + ".");
                                     if(data.deuda_pendiente > 0) {
                                         deuda = data.deuda_pendiente;
                                         //imagen con pasos resumen
@@ -1041,12 +1041,12 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     paso = data.siguiente_paso;
                                                     etiqueta_intencion = data.etiqueta_intencion;
                                                     const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);
+                                                    if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);
                                                 }
                                             });                                        
                                         }
                                         else if (paso == "2.1.1") {
-                                            //agregarMensaje("Unibot", "Nuestro sistema ha detectado que tienes una deuda pendiente por valor de <span style='color: red;'><strong>" + formatoCadenaNumero(data.deuda_pendiente) + "</strong></span>. Para continuar es necesario ponerte al día con la dueda.");
+                                            //agregarMensaje("ghfbot", "Nuestro sistema ha detectado que tienes una deuda pendiente por valor de <span style='color: red;'><strong>" + formatoCadenaNumero(data.deuda_pendiente) + "</strong></span>. Para continuar es necesario ponerte al día con la dueda.");
                                             let respuesta = "Nuestro sistema ha detectado que tienes deuda pendiente por valor de <span style='color: red;'><strong>" + formatoCadenaNumero(data.deuda_pendiente) + "</strong></span> con éste detalle: <ul>";
                                             
                                             if(data.deuda_año_anterior > 0) {
@@ -1059,13 +1059,13 @@ document.addEventListener("DOMContentLoaded", () => {
                                                 }
                                             }
                                             respuesta += "</ul>Para continuar es necesario ponerte al día con la dueda total." 
-                                            agregarMensaje("Unibot", respuesta);
+                                            agregarMensaje("ghfbot", respuesta);
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === "valor_dueda_ant_cd");
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
                                         }
                                         else if (paso == "2.1.1.1") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
                                         }
                                         else if (paso == "2.1.1.2" && data.validacion_comprobante_deuda == 1) {
                                             //Se consume web service de cambio de paso
@@ -1081,7 +1081,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     paso = data_cp.siguiente_paso;
                                                     etiqueta_intencion = data_cp.etiqueta_intencion;
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
                                             
@@ -1096,7 +1096,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "2.1.1.2") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1109,7 +1109,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "2.2" || paso == "2.2.1") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1125,7 +1125,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
                                             intencion.respuesta = respuesta;
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1138,7 +1138,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if ((paso == "2.3.1" || paso == "2.3.2") && data.validacion_comprobante_matricula == 0) {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1163,7 +1163,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     paso = data_cp.siguiente_paso;
                                                     etiqueta_intencion = data_cp.etiqueta_intencion;
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
                                             
@@ -1178,7 +1178,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "2.4") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1203,7 +1203,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     paso = data_cp.siguiente_paso;
                                                     etiqueta_intencion = data_cp.etiqueta_intencion;
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
 
@@ -1218,7 +1218,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "2.4.1") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1231,7 +1231,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "2.5") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1256,7 +1256,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         //Se valida el paso
                                         if (paso == "1.2" || paso == "1.2.1") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1272,7 +1272,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
                                             intencion.respuesta = respuesta;
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1285,7 +1285,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if ((paso == "1.3.1" || paso == "1.3.2") && data.validacion_comprobante_matricula == 0) {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1310,7 +1310,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     paso = data_cp.siguiente_paso;
                                                     etiqueta_intencion = data_cp.etiqueta_intencion;
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
                                             
@@ -1325,7 +1325,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "1.4") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1350,7 +1350,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     paso = data_cp.siguiente_paso;
                                                     etiqueta_intencion = data_cp.etiqueta_intencion;
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
 
@@ -1365,7 +1365,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "1.4.1") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1378,7 +1378,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         }
                                         else if (paso == "1.5") {
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -1395,7 +1395,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     let r_grado = data.grados[0].gra;
                                     //alert(r_grado);
                                     let r_idgrado = data.grados[0].id_gra;
-                                    agregarMensaje("Unibot", "Este documento se encuentra activo en el grado " + r_grado + ".");
+                                    agregarMensaje("ghfbot", "Este documento se encuentra activo en el grado " + r_grado + ".");
                                 }
                                 /*else if(data.estado == "solicitud" || data.estado == "pre_solicitud") {
                                     let r_grado = data.grados[0].gra;
@@ -1409,23 +1409,23 @@ document.addEventListener("DOMContentLoaded", () => {
                                     let r_grado = data.grados[0].gra;
                                     let r_idgrado = data.grados[0].id_gra;
                                     //$("#register_grado").val(r_idgrado);
-                                    agregarMensaje("Unibot", "Estudiante antiguo, puede iniciar proceso de matícula para el grado " + r_grado + ".");
+                                    agregarMensaje("ghfbot", "Estudiante antiguo, puede iniciar proceso de matícula para el grado " + r_grado + ".");
                                 }
                                 else if (data.estado == "aprobado") {
                                     let r_grado = data.grados[0].gra;
                                     let r_idgrado = data.grados[0].id_gra;
                                     //$("#register_grado").val(r_idgrado);
-                                    agregarMensaje("Unibot", "Estudiante antiguo, puede iniciar proceso de matícula para el grado " + r_grado + ".");
+                                    agregarMensaje("ghfbot", "Estudiante antiguo, puede iniciar proceso de matícula para el grado " + r_grado + ".");
                                 }
                                 else if (data.estado == "retirado") {
-                                    agregarMensaje("Unibot", "Este documento se encuentra Retirado en este momento. Comunícate con Secretaría Académica.");
+                                    agregarMensaje("ghfbot", "Este documento se encuentra Retirado en este momento. Comunícate con Secretaría Académica.");
                                 }
                                 else if (data.estado == "nuevo" || data.estado == "nuevo_pre_solicitud" || data.estado == "nuevo_solicitud") { 
-                                    agregarMensaje("Unibot", "Te damos la bienvenida a formar parte de nuestro ecosistema de educación.");
+                                    agregarMensaje("ghfbot", "Te damos la bienvenida a formar parte de nuestro ecosistema de educación.");
                                     
                                     if (paso == "5.1" || paso == "5.2") {
                                         const intencion = BASE_INTENCIONES.find(i => i.etiqueta === "formulario_inicial_nuevo");
-                                        if (intencion) agregarMensaje("Unibot", intencion);
+                                        if (intencion) agregarMensaje("ghfbot", intencion);
 
                                         //imagen con pasos resumen
                                         const divPasos = document.getElementById("div-pasos");
@@ -1450,7 +1450,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                 paso = data_cp.siguiente_paso;
                                                 etiqueta_intencion = data_cp.etiqueta_intencion;
                                                 const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                if (intencion) agregarMensaje("Unibot", intencion);
+                                                if (intencion) agregarMensaje("ghfbot", intencion);
                                             }
                                         });
                                         
@@ -1465,7 +1465,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     }
                                     else if (paso == "5.3") {
                                         const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                        if (intencion) agregarMensaje("Unibot", intencion);
+                                        if (intencion) agregarMensaje("ghfbot", intencion);
 
                                         //imagen con pasos resumen
                                         const divPasos = document.getElementById("div-pasos");
@@ -1494,7 +1494,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         
                                                 let intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
                                                 intencion.respuesta = respuesta;
-                                                if (intencion) agregarMensaje("Unibot", intencion);
+                                                if (intencion) agregarMensaje("ghfbot", intencion);
                                             }
                                         });
 
@@ -1512,11 +1512,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                         
                                         let intencion = BASE_INTENCIONES.find(i => i.etiqueta === "reprogramar_entrevista_nuevo");
                                         intencion.respuesta = respuesta;
-                                        if (intencion) agregarMensaje("Unibot", intencion);
+                                        if (intencion) agregarMensaje("ghfbot", intencion);
                                     }
                                     else if (paso == "5.4") {
                                         const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                        if (intencion) agregarMensaje("Unibot", intencion);
+                                        if (intencion) agregarMensaje("ghfbot", intencion);
 
                                         //imagen con pasos resumen
                                         const divPasos = document.getElementById("div-pasos");
@@ -1532,7 +1532,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         
                                         const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
                                         intencion.respuesta = respuesta;
-                                        if (intencion) agregarMensaje("Unibot", intencion);
+                                        if (intencion) agregarMensaje("ghfbot", intencion);
 
                                         //imagen con pasos resumen
                                         const divPasos = document.getElementById("div-pasos");
@@ -1545,7 +1545,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     }
                                     else if ((paso == "5.5.1" || paso == "5.5.2") && data.validacion_comprobante_matricula == 0) {
                                         const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                        if (intencion) agregarMensaje("Unibot", intencion);
+                                        if (intencion) agregarMensaje("ghfbot", intencion);
 
                                         //imagen con pasos resumen
                                         const divPasos = document.getElementById("div-pasos");
@@ -1570,7 +1570,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                 paso = data_cp.siguiente_paso;
                                                 etiqueta_intencion = data_cp.etiqueta_intencion;
                                                 const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                if (intencion) agregarMensaje("Unibot", intencion);
+                                                if (intencion) agregarMensaje("ghfbot", intencion);
                                             }
                                         });
                                         
@@ -1585,7 +1585,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     }
                                     else if (paso == "5.6") {
                                         const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                        if (intencion) agregarMensaje("Unibot", intencion);
+                                        if (intencion) agregarMensaje("ghfbot", intencion);
 
                                         //imagen con pasos resumen
                                         const divPasos = document.getElementById("div-pasos");
@@ -1610,7 +1610,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                 paso = data_cp.siguiente_paso;
                                                 etiqueta_intencion = data_cp.etiqueta_intencion;
                                                 const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                if (intencion) agregarMensaje("Unibot", intencion);
+                                                if (intencion) agregarMensaje("ghfbot", intencion);
                                             }
                                         });
 
@@ -1625,7 +1625,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     }
                                     else if (paso == "5.6.1") {
                                         const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                        if (intencion) agregarMensaje("Unibot", intencion);
+                                        if (intencion) agregarMensaje("ghfbot", intencion);
 
                                         //imagen con pasos resumen
                                         const divPasos = document.getElementById("div-pasos");
@@ -1638,7 +1638,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     }
                                     else if (paso == "5.7") {
                                         const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                        if (intencion) agregarMensaje("Unibot", intencion);
+                                        if (intencion) agregarMensaje("ghfbot", intencion);
 
                                         //imagen con pasos resumen
                                         const divPasos = document.getElementById("div-pasos");
@@ -1651,23 +1651,23 @@ document.addEventListener("DOMContentLoaded", () => {
                                     }
                                 }
                                 else if (data.estado == "inactivo") {
-                                    agregarMensaje("Unibot", "Este documento se encuentra inactivo en este momento. Comunícate con Secretaría Académica.");
+                                    agregarMensaje("ghfbot", "Este documento se encuentra inactivo en este momento. Comunícate con Secretaría Académica.");
                                 }
                                 else {
-                                    agregarMensaje("Unibot", "No se pudo procesar la solicitud de matrícula para éste documento. Comunícate con Secretaría Académica.");
+                                    agregarMensaje("ghfbot", "No se pudo procesar la solicitud de matrícula para éste documento. Comunícate con Secretaría Académica.");
                                 }
                             }
 
-                            //agregarMensaje("Unibot", contenido.mensaje_exito);
+                            //agregarMensaje("ghfbot", contenido.mensaje_exito);
                             // Opcional: desbloquear siguiente paso
-                            //agregarMensaje("Unibot", "¿En qué más puedo ayudarte?");
+                            //agregarMensaje("ghfbot", "¿En qué más puedo ayudarte?");
                         } else {
-                            agregarMensaje("Unibot", contenido.mensaje_error);
+                            agregarMensaje("ghfbot", contenido.mensaje_error);
                         }
                     })
                     /*.catch(err => {
                         console.log("Error al conectar con el servicio:", err);
-                        agregarMensaje("Unibot", "⚠️ No fue posible conectar con el sistema de validación. Intenta más tarde.");
+                        agregarMensaje("ghfbot", "⚠️ No fue posible conectar con el sistema de validación. Intenta más tarde.");
                     })*/;
                 };
             }
@@ -1696,7 +1696,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }                    
                     contenedor.removeChild(contenedorCarga);
@@ -1766,10 +1766,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     //msg1.style.wordWrap = "break-word";
                     msg1.className += "bot-msg";
                     if (grado == "" || grado == "Ninguno") {
-                        msg1.innerHTML = "<strong>Unibot:</strong> Necesitas actualizar los datos registrados y seleccionar un grado.";
+                        msg1.innerHTML = "<strong>ghfbot:</strong> Necesitas actualizar los datos registrados y seleccionar un grado.";
                     }
                     else {
-                        msg1.innerHTML = "<strong>Unibot:</strong> Revisa y actualiza los datos registrados.";
+                        msg1.innerHTML = "<strong>ghfbot:</strong> Revisa y actualiza los datos registrados.";
                     }                    
                     contenedor.appendChild(msg1);
                     
@@ -1787,7 +1787,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         boton.onclick = () => {
                             const destino = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino);
-                            if (destino) agregarMensaje("Unibot", destino);
+                            if (destino) agregarMensaje("ghfbot", destino);
                         };
 
                         if ((grado == "" || grado == "Ninguno") && index == 1) {
@@ -1803,7 +1803,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.log("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -1845,7 +1845,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }
 
@@ -1863,7 +1863,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.log("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -1884,11 +1884,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     boton.onclick = () => {
                         if (btn.destino == "opciones_pago_matricula_antiguo_sd") {
                             const intencionOpcionesPago = BASE_INTENCIONES.find(i => i.etiqueta === "opciones_pago_matricula_antiguo_sd");
-                            if (intencionOpcionesPago) agregarMensaje("Unibot", intencionOpcionesPago);                        
+                            if (intencionOpcionesPago) agregarMensaje("ghfbot", intencionOpcionesPago);                        
                         }
                         else if (btn.destino == "comprobante_matricula_ant_sd") {
                             const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === "comprobante_matricula_ant_sd");
-                            if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);
+                            if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);
                         }
                     };
                     botonera.appendChild(boton);
@@ -1935,7 +1935,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                         else if (btn.destino == "comprobante_matricula_ant_sd") {
                             const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === "comprobante_matricula_ant_sd");
-                            if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);                                                    
+                            if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);                                                    
                         }
                     };
                     botonera.appendChild(boton);
@@ -2008,7 +2008,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Acción del botón → abre la intención "opciones_pago_deuda"
                 botonCambiarPago.onclick = () => {
                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === "opciones_pago_matricula_antiguo_sd");
-                    if (intencion) agregarMensaje("Unibot", intencion);
+                    if (intencion) agregarMensaje("ghfbot", intencion);
                 };
 
                 input.addEventListener("change", function(e) {
@@ -2039,7 +2039,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     archivoTexto.textContent = file.name;
 
                     // Mostrar mensaje de espera
-                    agregarMensaje("Unibot", mensajeEspera);
+                    agregarMensaje("ghfbot", mensajeEspera);
 
                     // Enviar archivo
                     const formData = new FormData();
@@ -2089,7 +2089,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             paso = data.siguiente_paso;
                                             etiqueta_intencion = data.etiqueta_intencion;
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -2106,12 +2106,12 @@ document.addEventListener("DOMContentLoaded", () => {
                             
                         }
                         else {
-                            agregarMensaje("Unibot", mensajeError + " " + data.mensaje);
+                            agregarMensaje("ghfbot", mensajeError + " " + data.mensaje);
                         }
                     })
                     .catch(err => {
                         console.log("❌ Error general:", err);
-                        agregarMensaje("Unibot", mensajeError);
+                        agregarMensaje("ghfbot", mensajeError);
                     });
                 });
 
@@ -2207,7 +2207,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     boton.onclick = () => {
                         const destino = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino);
-                        if (destino) agregarMensaje("Unibot", destino);
+                        if (destino) agregarMensaje("ghfbot", destino);
                     };
 
                     botonera.appendChild(boton);
@@ -2256,7 +2256,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }
 
@@ -2269,7 +2269,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.log("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -2353,7 +2353,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     boton.onclick = () => {
                         if (btn.destino == "opciones_pago_deuda_antiguo") {
                             const intencionOpcionesPago = BASE_INTENCIONES.find(i => i.etiqueta === "opciones_pago_deuda_antiguo");
-                            if (intencionOpcionesPago) agregarMensaje("Unibot", intencionOpcionesPago);                        
+                            if (intencionOpcionesPago) agregarMensaje("ghfbot", intencionOpcionesPago);                        
                         }
                         else if (btn.destino == "comprobante_deuda_ant_cd") {
                             let msgControl = "paso 2.1.1 terminado";
@@ -2369,7 +2369,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     paso = data.siguiente_paso;
                                     etiqueta_intencion = data.etiqueta_intencion;
                                     const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                    if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);
+                                    if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);
                                 }
                             });
                         }
@@ -2421,7 +2421,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     paso = data.siguiente_paso;
                                     etiqueta_intencion = data.etiqueta_intencion;
                                     const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                    if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);
+                                    if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);
                                 }
                             });                                                    
                         }
@@ -2513,7 +2513,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             paso = data.paso_anterior;
                             //etiqueta_intencion = data.etiqueta_intencion;
                             const anterior = BASE_INTENCIONES.find(i => i.etiqueta === "opciones_pago_deuda_antiguo");
-                            if (anterior) agregarMensaje("Unibot", anterior);
+                            if (anterior) agregarMensaje("ghfbot", anterior);
                         }
                     });
                 };
@@ -2546,7 +2546,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     archivoTexto.textContent = file.name;
 
                     // Mostrar mensaje de espera
-                    agregarMensaje("Unibot", mensajeEspera);
+                    agregarMensaje("ghfbot", mensajeEspera);
 
                     // Enviar archivo
                     const formData = new FormData();
@@ -2571,7 +2571,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     })
                     .then(data => {
                         if (data.status == "success") {
-                            //agregarMensaje("Unibot", mensajeExito);
+                            //agregarMensaje("ghfbot", mensajeExito);
 
                             let msgControl = "paso 2.1.1.1 terminado";
                             //Se consume web service de cambio de paso
@@ -2586,7 +2586,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     paso = data.siguiente_paso;
                                     etiqueta_intencion = data.etiqueta_intencion;
                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                    if (intencion) agregarMensaje("ghfbot", intencion);
 
                                     //imagen con pasos resumen
                                     const divPasos = document.getElementById("div-pasos");
@@ -2601,12 +2601,12 @@ document.addEventListener("DOMContentLoaded", () => {
                             
                         }
                         else {
-                            agregarMensaje("Unibot", mensajeError + " " + data.mensaje);
+                            agregarMensaje("ghfbot", mensajeError + " " + data.mensaje);
                         }
                     })
                     .catch(err => {
                         console.log("❌ Error general:", err);
-                        agregarMensaje("Unibot", mensajeError);
+                        agregarMensaje("ghfbot", mensajeError);
                     });
                 });
 
@@ -2648,7 +2648,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }                    
                     contenedor.removeChild(contenedorCarga);
@@ -2718,10 +2718,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     //msg1.style.wordWrap = "break-word";
                     msg1.className += "bot-msg";
                     if (grado == "" || grado == "Ninguno") {
-                        msg1.innerHTML = "<strong>Unibot:</strong> Necesitas actualizar los datos registrados y seleccionar un grado.";
+                        msg1.innerHTML = "<strong>ghfbot:</strong> Necesitas actualizar los datos registrados y seleccionar un grado.";
                     }
                     else {
-                        msg1.innerHTML = "<strong>Unibot:</strong> Revisa y actualiza los datos registrados.";
+                        msg1.innerHTML = "<strong>ghfbot:</strong> Revisa y actualiza los datos registrados.";
                     }                    
                     contenedor.appendChild(msg1);
                     
@@ -2739,7 +2739,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         boton.onclick = () => {
                             const destino = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino);
-                            if (destino) agregarMensaje("Unibot", destino);
+                            if (destino) agregarMensaje("ghfbot", destino);
                         };
 
                         if ((grado == "" || grado == "Ninguno") && index == 1) {
@@ -2755,7 +2755,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.log("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -2797,7 +2797,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }
 
@@ -2815,7 +2815,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.error("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -2836,11 +2836,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     boton.onclick = () => {
                         if (btn.destino == "opciones_pago_matricula_antiguo_cd") {
                             const intencionOpcionesPago = BASE_INTENCIONES.find(i => i.etiqueta === "opciones_pago_matricula_antiguo_cd");
-                            if (intencionOpcionesPago) agregarMensaje("Unibot", intencionOpcionesPago);                        
+                            if (intencionOpcionesPago) agregarMensaje("ghfbot", intencionOpcionesPago);                        
                         }
                         else if (btn.destino == "comprobante_matricula_ant_cd") {
                             const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === "comprobante_matricula_ant_cd");
-                            if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);
+                            if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);
                         }
                     };
                     botonera.appendChild(boton);
@@ -2887,7 +2887,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                         else if (btn.destino == "comprobante_matricula_ant_cd") {
                             const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === "comprobante_matricula_ant_cd");
-                            if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);                                                    
+                            if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);                                                    
                         }
                     };
                     botonera.appendChild(boton);
@@ -2959,7 +2959,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Acción del botón → abre la intención "opciones_pago_deuda"
                 botonCambiarPago.onclick = () => {
                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === "opciones_pago_matricula_antiguo_cd");
-                    if (intencion) agregarMensaje("Unibot", intencion);
+                    if (intencion) agregarMensaje("ghfbot", intencion);
                 };
 
                 input.addEventListener("change", function(e) {
@@ -2990,7 +2990,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     archivoTexto.textContent = file.name;
 
                     // Mostrar mensaje de espera
-                    agregarMensaje("Unibot", mensajeEspera);
+                    agregarMensaje("ghfbot", mensajeEspera);
 
                     // Enviar archivo
                     const formData = new FormData();
@@ -3040,7 +3040,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             paso = data.siguiente_paso;
                                             etiqueta_intencion = data.etiqueta_intencion;
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -3057,12 +3057,12 @@ document.addEventListener("DOMContentLoaded", () => {
                             
                         }
                         else {
-                            agregarMensaje("Unibot", mensajeError + " " + data.mensaje);
+                            agregarMensaje("ghfbot", mensajeError + " " + data.mensaje);
                         }
                     })
                     .catch(err => {
                         console.log("❌ Error general:", err);
-                        agregarMensaje("Unibot", mensajeError);
+                        agregarMensaje("ghfbot", mensajeError);
                     });
                 });
 
@@ -3147,7 +3147,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     boton.onclick = () => {
                         const destino = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino);
-                        if (destino) agregarMensaje("Unibot", destino);
+                        if (destino) agregarMensaje("ghfbot", destino);
                     };
 
                     botonera.appendChild(boton);
@@ -3196,7 +3196,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }
 
@@ -3209,7 +3209,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.log("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -3282,7 +3282,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     boton.onclick = () => {
                         if (btn.destino == "opciones_pago_deuda_antiguo_nuevo") {
                             const intencionOpcionesPago = BASE_INTENCIONES.find(i => i.etiqueta === "opciones_pago_deuda_antiguo_nuevo");
-                            if (intencionOpcionesPago) agregarMensaje("Unibot", intencionOpcionesPago);                        
+                            if (intencionOpcionesPago) agregarMensaje("ghfbot", intencionOpcionesPago);                        
                         }
                         else if (btn.destino == "comprobante_deuda_ant_nuevo_cd") {
                             let msgControl = "paso 3.1.1 terminado";
@@ -3298,7 +3298,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     paso = data.siguiente_paso;
                                     etiqueta_intencion = data.etiqueta_intencion;
                                     const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                    if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);
+                                    if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);
                                 }
                             });
                         }
@@ -3350,7 +3350,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     paso = data.siguiente_paso;
                                     etiqueta_intencion = data.etiqueta_intencion;
                                     const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                    if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);
+                                    if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);
                                 }
                             });                                                    
                         }
@@ -3441,7 +3441,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             paso = data.paso_anterior;
                             etiqueta_intencion = data.etiqueta_intencion;
                             const anterior = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                            if (anterior) agregarMensaje("Unibot", anterior);
+                            if (anterior) agregarMensaje("ghfbot", anterior);
                         }
                     });
                 };
@@ -3474,7 +3474,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     archivoTexto.textContent = file.name;
 
                     // Mostrar mensaje de espera
-                    agregarMensaje("Unibot", mensajeEspera);
+                    agregarMensaje("ghfbot", mensajeEspera);
 
                     // Enviar archivo
                     const formData = new FormData();
@@ -3503,12 +3503,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         /*if (data.ok) {
                             let msgControl = "paso 3.1.1.1 terminado";
                             //Se consume web service de cambio de paso
-                            agregarMensaje("Unibot", mensajeExito);
+                            agregarMensaje("ghfbot", mensajeExito);
                         } else {
-                            agregarMensaje("Unibot", mensajeError + " " + data.error);
+                            agregarMensaje("ghfbot", mensajeError + " " + data.error);
                         }*/
                        if (data.status == "success") {
-                            //agregarMensaje("Unibot", mensajeExito);
+                            //agregarMensaje("ghfbot", mensajeExito);
 
                             let msgControl = "paso 3.1.1.1 terminado";
                             //Se consume web service de cambio de paso
@@ -3523,7 +3523,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     paso = data.siguiente_paso;
                                     etiqueta_intencion = data.etiqueta_intencion;
                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                    if (intencion) agregarMensaje("ghfbot", intencion);
 
                                     //imagen con pasos resumen
                                     const divPasos = document.getElementById("div-pasos");
@@ -3538,13 +3538,13 @@ document.addEventListener("DOMContentLoaded", () => {
                             
                         }
                         else {
-                            agregarMensaje("Unibot", mensajeError + " " + data.mensaje);
+                            agregarMensaje("ghfbot", mensajeError + " " + data.mensaje);
                         }
                     })
                     .catch(err => {
                         //console.error(err);
                         console.error("❌ Error general:", err);
-                        agregarMensaje("Unibot", mensajeError);
+                        agregarMensaje("ghfbot", mensajeError);
                     });
                 });
 
@@ -3591,7 +3591,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }                    
                     contenedor.removeChild(contenedorCarga);
@@ -3664,10 +3664,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     //msg1.style.wordWrap = "break-word";
                     //msg1.className += "bot-msg";
                     if (grado == "" || grado == "Ninguno") {
-                        msg1.innerHTML = "<strong>Unibot:</strong> Necesitas actualizar los datos registrados y seleccionar un grado.";
+                        msg1.innerHTML = "<strong>ghfbot:</strong> Necesitas actualizar los datos registrados y seleccionar un grado.";
                     }
                     else {
-                        msg1.innerHTML = "<strong>Unibot:</strong> ¿Desea actualizarlos?";
+                        msg1.innerHTML = "<strong>ghfbot:</strong> ¿Desea actualizarlos?";
                     }                    
                     contenedor.appendChild(msg1);
                     
@@ -3685,7 +3685,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         boton.onclick = () => {
                             const destino = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino);
-                            if (destino) agregarMensaje("Unibot", destino);
+                            if (destino) agregarMensaje("ghfbot", destino);
                         };
 
                         if ((grado == "" || grado == "Ninguno") && index == 1) {
@@ -3701,7 +3701,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.error("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -3743,7 +3743,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }
 
@@ -3761,7 +3761,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.error("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -3816,7 +3816,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     //contenedor.removeChild(contenedorCarga);
 
                     if (data.status !== "success" || !data.botones) {
-                        agregarMensaje("Unibot", "❌ No se pudieron cargar los horarios.");
+                        agregarMensaje("ghfbot", "❌ No se pudieron cargar los horarios.");
                         return;
                     }
 
@@ -3871,20 +3871,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
                                     let intencion = BASE_INTENCIONES.find(i => i.etiqueta === "reprogramar_entrevista_ant_nuevo_cd");
                                     intencion.respuesta = respuesta;
-                                    if (intencion) agregarMensaje("Unibot", intencion);
-                                    //agregarMensaje("Unibot", "✅ Entrevista agendada exitosamente.");
+                                    if (intencion) agregarMensaje("ghfbot", intencion);
+                                    //agregarMensaje("ghfbot", "✅ Entrevista agendada exitosamente.");
                                 } else {
                                     let respuesta = "❌ Agenda ocupada para esa fecha y hora. Selecciona otra opción.";
 
                                     let intencion = BASE_INTENCIONES.find(i => i.etiqueta === "entrevista_ant_nuevo_cd");
                                     intencion.respuesta = respuesta;
-                                    if (intencion) agregarMensaje("Unibot", intencion);
-                                    //agregarMensaje("Unibot", "❌ Agenda ocupada para esa fecha y hora. Selecciona otra opción.");
+                                    if (intencion) agregarMensaje("ghfbot", intencion);
+                                    //agregarMensaje("ghfbot", "❌ Agenda ocupada para esa fecha y hora. Selecciona otra opción.");
                                 }
                             })
                             .catch(err => {
                                 console.log(err);
-                                agregarMensaje("Unibot", "⚠️ Error de conexión con el servidor.");
+                                agregarMensaje("ghfbot", "⚠️ Error de conexión con el servidor.");
                             });
                         };
 
@@ -3899,7 +3899,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     contenedor.appendChild(estadoDiv);
                 })
                 .catch(() => {
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
 
                 //imagen con pasos resumen
@@ -3932,7 +3932,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             if (btn.tipo === "intencion" && btn.destino) {
                                 const intencionDestino = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino);
                                 if (intencionDestino) {
-                                    agregarMensaje("Unibot", intencionDestino);
+                                    agregarMensaje("ghfbot", intencionDestino);
                                 } 
                             } 
                         };
@@ -3974,11 +3974,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     boton.onclick = () => {
                         if (btn.destino == "opciones_pago_matricula_antiguo_nuevo_cd") {
                             const intencionOpcionesPago = BASE_INTENCIONES.find(i => i.etiqueta === "opciones_pago_matricula_antiguo_nuevo_cd");
-                            if (intencionOpcionesPago) agregarMensaje("Unibot", intencionOpcionesPago);                        
+                            if (intencionOpcionesPago) agregarMensaje("ghfbot", intencionOpcionesPago);                        
                         }
                         else if (btn.destino == "comprobante_matricula_ant_nuevo_cd") {
                             const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === "comprobante_matricula_ant_nuevo_cd");
-                            if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);
+                            if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);
                         }
                     };
                     botonera.appendChild(boton);
@@ -4025,7 +4025,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                         else if (btn.destino == "comprobante_matricula_ant_nuevo_cd") {
                             const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === "comprobante_matricula_ant_nuevo_cd");
-                            if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);                                                    
+                            if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);                                                    
                         }
                     };
                     botonera.appendChild(boton);
@@ -4097,7 +4097,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Acción del botón → abre la intención "opciones_pago_deuda"
                 botonCambiarPago.onclick = () => {
                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === "opciones_pago_matricula_antiguo_nuevo_cd");
-                    if (intencion) agregarMensaje("Unibot", intencion);
+                    if (intencion) agregarMensaje("ghfbot", intencion);
                 };
 
                 input.addEventListener("change", function(e) {
@@ -4128,7 +4128,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     archivoTexto.textContent = file.name;
 
                     // Mostrar mensaje de espera
-                    agregarMensaje("Unibot", mensajeEspera);
+                    agregarMensaje("ghfbot", mensajeEspera);
 
                     // Enviar archivo
                     const formData = new FormData();
@@ -4178,7 +4178,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             paso = data.siguiente_paso;
                                             etiqueta_intencion = data.etiqueta_intencion;
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -4195,12 +4195,12 @@ document.addEventListener("DOMContentLoaded", () => {
                             
                         }
                         else {
-                            agregarMensaje("Unibot", mensajeError + " " + data.mensaje);
+                            agregarMensaje("ghfbot", mensajeError + " " + data.mensaje);
                         }
                     })
                     .catch(err => {
                         console.log("❌ Error general:", err);
-                        agregarMensaje("Unibot", mensajeError);
+                        agregarMensaje("ghfbot", mensajeError);
                     });
                 });
 
@@ -4284,10 +4284,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 msg1.style.lineHeight = "1.5";
                 msg1.style.wordWrap = "break-word";
                 if (grado == "" || grado == "Ninguno") {
-                    msg1.innerHTML = "<strong>Unibot:</strong> Necesitas actualizar los datos registrados y seleccionar un grado.";
+                    msg1.innerHTML = "<strong>ghfbot:</strong> Necesitas actualizar los datos registrados y seleccionar un grado.";
                 }
                 else {
-                    msg1.innerHTML = "<strong>Unibot:</strong> ¿Desea actualizarlos?";
+                    msg1.innerHTML = "<strong>ghfbot:</strong> ¿Desea actualizarlos?";
                 }                    
                 contenedor.appendChild(msg1);*/
                 
@@ -4305,7 +4305,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     boton.onclick = () => {
                         const destino = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino);
-                        if (destino) agregarMensaje("Unibot", destino);
+                        if (destino) agregarMensaje("ghfbot", destino);
                     };
 
                     botonera.appendChild(boton);
@@ -4354,7 +4354,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }
 
@@ -4367,7 +4367,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.log("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -4445,7 +4445,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }                    
                     contenedor.removeChild(contenedorCarga);
@@ -4518,10 +4518,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     //msg1.style.wordWrap = "break-word";
                     msg1.className += "bot-msg";
                     if (grado == "" || grado == "Ninguno") {
-                        msg1.innerHTML = "<strong>Unibot:</strong> Necesitas actualizar los datos registrados y seleccionar un grado.";
+                        msg1.innerHTML = "<strong>ghfbot:</strong> Necesitas actualizar los datos registrados y seleccionar un grado.";
                     }
                     else {
-                        msg1.innerHTML = "<strong>Unibot:</strong> Revisa y actualiza los datos registrados";
+                        msg1.innerHTML = "<strong>ghfbot:</strong> Revisa y actualiza los datos registrados";
                     }                    
                     contenedor.appendChild(msg1);
                     
@@ -4539,7 +4539,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         boton.onclick = () => {
                             const destino = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino);
-                            if (destino) agregarMensaje("Unibot", destino);
+                            if (destino) agregarMensaje("ghfbot", destino);
                         };
 
                         if ((grado == "" || grado == "Ninguno") && index == 1) {
@@ -4555,7 +4555,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.log("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -4597,7 +4597,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }
 
@@ -4615,7 +4615,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.log("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -4671,7 +4671,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     //contenedor.removeChild(contenedorCarga);
 
                     if (data.status !== "success" || !data.botones) {
-                        agregarMensaje("Unibot", "❌ No se pudieron cargar los horarios.");
+                        agregarMensaje("ghfbot", "❌ No se pudieron cargar los horarios.");
                         return;
                     }
 
@@ -4726,20 +4726,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
                                     let intencion = BASE_INTENCIONES.find(i => i.etiqueta === "reprogramar_entrevista_ant_nuevo_sd");
                                     intencion.respuesta = respuesta;
-                                    if (intencion) agregarMensaje("Unibot", intencion);
-                                    //agregarMensaje("Unibot", "✅ Entrevista agendada exitosamente.");
+                                    if (intencion) agregarMensaje("ghfbot", intencion);
+                                    //agregarMensaje("ghfbot", "✅ Entrevista agendada exitosamente.");
                                 } else {
                                     let respuesta = "❌ Agenda ocupada para esa fecha y hora. Selecciona otra opción.";
 
                                     let intencion = BASE_INTENCIONES.find(i => i.etiqueta === "entrevista_ant_nuevo_sd");
                                     intencion.respuesta = respuesta;
-                                    if (intencion) agregarMensaje("Unibot", intencion);
-                                    //agregarMensaje("Unibot", "❌ Agenda ocupada para esa fecha y hora. Selecciona otra opción.");
+                                    if (intencion) agregarMensaje("ghfbot", intencion);
+                                    //agregarMensaje("ghfbot", "❌ Agenda ocupada para esa fecha y hora. Selecciona otra opción.");
                                 }
                             })
                             .catch(err => {
                                 console.log(err);
-                                agregarMensaje("Unibot", "⚠️ Error de conexión con el servidor.");
+                                agregarMensaje("ghfbot", "⚠️ Error de conexión con el servidor.");
                             });
                         };
 
@@ -4754,7 +4754,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     contenedor.appendChild(estadoDiv);
                 })
                 .catch(() => {
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
 
                 //imagen con pasos resumen
@@ -4787,7 +4787,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             if (btn.tipo === "intencion" && btn.destino) {
                                 const intencionDestino = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino);
                                 if (intencionDestino) {
-                                    agregarMensaje("Unibot", intencionDestino);
+                                    agregarMensaje("ghfbot", intencionDestino);
                                 } 
                             } 
                         };
@@ -4829,11 +4829,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     boton.onclick = () => {
                         if (btn.destino == "opciones_pago_matricula_antiguo_nuevo_sd") {
                             const intencionOpcionesPago = BASE_INTENCIONES.find(i => i.etiqueta === "opciones_pago_matricula_antiguo_nuevo_sd");
-                            if (intencionOpcionesPago) agregarMensaje("Unibot", intencionOpcionesPago);                        
+                            if (intencionOpcionesPago) agregarMensaje("ghfbot", intencionOpcionesPago);                        
                         }
                         else if (btn.destino == "comprobante_matricula_ant_nuevo_sd") {
                             const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === "comprobante_matricula_ant_nuevo_sd");
-                            if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);
+                            if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);
                         }
                     };
                     botonera.appendChild(boton);
@@ -4880,7 +4880,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                         else if (btn.destino == "comprobante_matricula_ant_nuevo_sd") {
                             const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === "comprobante_matricula_ant_nuevo_sd");
-                            if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);                                                    
+                            if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);                                                    
                         }
                     };
                     botonera.appendChild(boton);
@@ -4952,7 +4952,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Acción del botón → abre la intención "opciones_pago_deuda"
                 botonCambiarPago.onclick = () => {
                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === "opciones_pago_matricula_antiguo_nuevo_sd");
-                    if (intencion) agregarMensaje("Unibot", intencion);
+                    if (intencion) agregarMensaje("ghfbot", intencion);
                 };
 
                 input.addEventListener("change", function(e) {
@@ -4983,7 +4983,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     archivoTexto.textContent = file.name;
 
                     // Mostrar mensaje de espera
-                    agregarMensaje("Unibot", mensajeEspera);
+                    agregarMensaje("ghfbot", mensajeEspera);
 
                     // Enviar archivo
                     const formData = new FormData();
@@ -5033,7 +5033,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             paso = data.siguiente_paso;
                                             etiqueta_intencion = data.etiqueta_intencion;
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -5050,12 +5050,12 @@ document.addEventListener("DOMContentLoaded", () => {
                             
                         }
                         else {
-                            agregarMensaje("Unibot", mensajeError + " " + data.mensaje);
+                            agregarMensaje("ghfbot", mensajeError + " " + data.mensaje);
                         }
                     })
                     .catch(err => {
                         console.log("❌ Error general:", err);
-                        agregarMensaje("Unibot", mensajeError);
+                        agregarMensaje("ghfbot", mensajeError);
                     });
                 });
 
@@ -5140,7 +5140,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     boton.onclick = () => {
                         const destino = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino);
-                        if (destino) agregarMensaje("Unibot", destino);
+                        if (destino) agregarMensaje("ghfbot", destino);
                     };
 
                     botonera.appendChild(boton);
@@ -5189,7 +5189,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }
 
@@ -5202,7 +5202,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.log("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -5287,7 +5287,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }                    
                     //contenedor.removeChild(contenedorCarga);
@@ -5307,7 +5307,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.error("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });                
             }
 
@@ -5363,7 +5363,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     //contenedor.removeChild(contenedorCarga);
 
                     if (data.status !== "success" || !data.botones) {
-                        agregarMensaje("Unibot", "❌ No se pudieron cargar los horarios.");
+                        agregarMensaje("ghfbot", "❌ No se pudieron cargar los horarios.");
                         return;
                     }
 
@@ -5418,20 +5418,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
                                     let intencion = BASE_INTENCIONES.find(i => i.etiqueta === "reprogramar_entrevista_nuevo");
                                     intencion.respuesta = respuesta;
-                                    if (intencion) agregarMensaje("Unibot", intencion);
-                                    //agregarMensaje("Unibot", "✅ Entrevista agendada exitosamente.");
+                                    if (intencion) agregarMensaje("ghfbot", intencion);
+                                    //agregarMensaje("ghfbot", "✅ Entrevista agendada exitosamente.");
                                 } else {
                                     let respuesta = "❌ Agenda ocupada para esa fecha y hora. Selecciona otra opción.";
 
                                     let intencion = BASE_INTENCIONES.find(i => i.etiqueta === "entrevista_nuevo");
                                     intencion.respuesta = respuesta;
-                                    if (intencion) agregarMensaje("Unibot", intencion);
-                                    //agregarMensaje("Unibot", "❌ Agenda ocupada para esa fecha y hora. Selecciona otra opción.");
+                                    if (intencion) agregarMensaje("ghfbot", intencion);
+                                    //agregarMensaje("ghfbot", "❌ Agenda ocupada para esa fecha y hora. Selecciona otra opción.");
                                 }
                             })
                             .catch(err => {
                                 console.log(err);
-                                agregarMensaje("Unibot", "⚠️ Error de conexión con el servidor.");
+                                agregarMensaje("ghfbot", "⚠️ Error de conexión con el servidor.");
                             });
                         };
 
@@ -5446,7 +5446,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     contenedor.appendChild(estadoDiv);
                 })
                 .catch(() => {
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
 
                 //imagen con pasos resumen
@@ -5479,7 +5479,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             if (btn.tipo === "intencion" && btn.destino) {
                                 const intencionDestino = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino);
                                 if (intencionDestino) {
-                                    agregarMensaje("Unibot", intencionDestino);
+                                    agregarMensaje("ghfbot", intencionDestino);
                                 } 
                             } 
                         };
@@ -5521,11 +5521,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     boton.onclick = () => {
                         if (btn.destino == "opciones_pago_matricula_nuevo") {
                             const intencionOpcionesPago = BASE_INTENCIONES.find(i => i.etiqueta === "opciones_pago_matricula_nuevo");
-                            if (intencionOpcionesPago) agregarMensaje("Unibot", intencionOpcionesPago);                        
+                            if (intencionOpcionesPago) agregarMensaje("ghfbot", intencionOpcionesPago);                        
                         }
                         else if (btn.destino == "comprobante_matricula_nuevo") {
                             const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === "comprobante_matricula_nuevo");
-                            if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);
+                            if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);
                         }
                     };
                     botonera.appendChild(boton);
@@ -5572,7 +5572,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                         else if (btn.destino == "comprobante_matricula_nuevo") {
                             const intencionComprobante = BASE_INTENCIONES.find(i => i.etiqueta === "comprobante_matricula_nuevo");
-                            if (intencionComprobante) agregarMensaje("Unibot", intencionComprobante);                                                    
+                            if (intencionComprobante) agregarMensaje("ghfbot", intencionComprobante);                                                    
                         }
                     };
                     botonera.appendChild(boton);
@@ -5644,7 +5644,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Acción del botón → abre la intención "opciones_pago_deuda"
                 botonCambiarPago.onclick = () => {
                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === "opciones_pago_matricula_nuevo");
-                    if (intencion) agregarMensaje("Unibot", intencion);
+                    if (intencion) agregarMensaje("ghfbot", intencion);
                 };
 
                 input.addEventListener("change", function(e) {
@@ -5675,7 +5675,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     archivoTexto.textContent = file.name;
 
                     // Mostrar mensaje de espera
-                    agregarMensaje("Unibot", mensajeEspera);
+                    agregarMensaje("ghfbot", mensajeEspera);
 
                     // Enviar archivo
                     const formData = new FormData();
@@ -5725,7 +5725,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             paso = data.siguiente_paso;
                                             etiqueta_intencion = data.etiqueta_intencion;
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
 
                                             //imagen con pasos resumen
                                             const divPasos = document.getElementById("div-pasos");
@@ -5742,12 +5742,12 @@ document.addEventListener("DOMContentLoaded", () => {
                             
                         }
                         else {
-                            agregarMensaje("Unibot", mensajeError + " " + data.mensaje);
+                            agregarMensaje("ghfbot", mensajeError + " " + data.mensaje);
                         }
                     })
                     .catch(err => {
                         console.log("❌ Error general:", err);
-                        agregarMensaje("Unibot", mensajeError);
+                        agregarMensaje("ghfbot", mensajeError);
                     });
                 });
 
@@ -5833,7 +5833,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     boton.onclick = () => {
                         const destino = BASE_INTENCIONES.find(i => i.etiqueta === btn.destino);
-                        if (destino) agregarMensaje("Unibot", destino);
+                        if (destino) agregarMensaje("ghfbot", destino);
                     };
 
                     botonera.appendChild(boton);
@@ -5882,7 +5882,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }
 
@@ -5895,7 +5895,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.log("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -5989,7 +5989,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(r => r.json())
                 .then(datos => {
                     if (datos.status !== "success") {
-                        agregarMensaje("Unibot", "❌ No se pudo cargar la información del estudiante.");
+                        agregarMensaje("ghfbot", "❌ No se pudo cargar la información del estudiante.");
                         return;
                     }
 
@@ -6002,7 +6002,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(err => {
                     console.log("Error al cargar datos:", err);
-                    agregarMensaje("Unibot", "❌ No fue posible conectar con el sistema.");
+                    agregarMensaje("ghfbot", "❌ No fue posible conectar con el sistema.");
                 });
             }
 
@@ -6099,7 +6099,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
 
                     if (!completo) {
-                        agregarMensaje("Unibot", contenido.mensaje_error);
+                        agregarMensaje("ghfbot", contenido.mensaje_error);
                         return;
                     }
 
@@ -6112,14 +6112,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     .then(r => r.json())
                     .then(data => {
                         if (data.ok) {
-                            agregarMensaje("Unibot", contenido.mensaje_exito);
+                            agregarMensaje("ghfbot", contenido.mensaje_exito);
                         } else {
-                            agregarMensaje("Unibot", contenido.mensaje_error + " (" + data.error + ")");
+                            agregarMensaje("ghfbot", contenido.mensaje_error + " (" + data.error + ")");
                         }
                     })
                     .catch(err => {
                         console.error(err);
-                        agregarMensaje("Unibot", contenido.mensaje_error);
+                        agregarMensaje("ghfbot", contenido.mensaje_error);
                     });
 
                     // Opcional: limpiar formulario
@@ -6339,7 +6339,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
 
                     if (!completo) {
-                        agregarMensaje("Unibot", contenido.mensaje_error);
+                        agregarMensaje("ghfbot", contenido.mensaje_error);
                         return;
                     }
 
@@ -6352,14 +6352,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     .then(r => r.json())
                     .then(data => {
                         if (data.ok) {
-                            agregarMensaje("Unibot", contenido.mensaje_exito);
+                            agregarMensaje("ghfbot", contenido.mensaje_exito);
                         } else {
-                            agregarMensaje("Unibot", contenido.mensaje_error + " (" + data.error + ")");
+                            agregarMensaje("ghfbot", contenido.mensaje_error + " (" + data.error + ")");
                         }
                     })
                     .catch(err => {
                         console.error(err);
-                        agregarMensaje("Unibot", contenido.mensaje_error);
+                        agregarMensaje("ghfbot", contenido.mensaje_error);
                     });
 
                     // Opcional: limpiar formulario
@@ -6458,7 +6458,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Mostrar confirmación
-        agregarMensaje("Unibot", { respuesta: respuesta });
+        agregarMensaje("ghfbot", { respuesta: respuesta });
     }
 
     // Generar formulario dinámico
@@ -6709,7 +6709,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 submitBtn.textContent = "Enviar datos y documentos";
                 submitBtn.style.opacity = "1";
                 submitBtn.style.cursor = "pointer";
-                agregarMensaje("Unibot", "❌ Por favor completa todos los campos.");
+                agregarMensaje("ghfbot", "❌ Por favor completa todos los campos.");
                 return;
             }
 
@@ -6724,7 +6724,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (data.status == "success") {
                     console.log(data);
                     grado = data.grado;
-                    agregarMensaje("Unibot", data.mensaje);
+                    agregarMensaje("ghfbot", data.mensaje);
                     //Se consume web service de cambio de paso
                     if (paso == "1.2") {
                         let msgControl = "paso 1.2 terminado";
@@ -6754,7 +6754,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         let respuesta = "Los costos de matrícula para el grado " + grado + " son: Matrícula <span style='color: blue;'>" + formatoCadenaNumero(data.matricula) + "</span>, Otros Cobros Periódicos <span style='color: blue;'>" + formatoCadenaNumero(data.ocp) + "</span> y Pensión <span style='color: blue;'>" + formatoCadenaNumero(data.pension) + "</span>; para un total de <span style='color: blue;'>" + formatoCadenaNumero(data.pp) + "</span>.";
                                         const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
                                         intencion.respuesta = respuesta;
-                                        if (intencion) agregarMensaje("Unibot", intencion);
+                                        if (intencion) agregarMensaje("ghfbot", intencion);
                                     }
                                 });
                             }
@@ -6788,7 +6788,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         let respuesta = "Los costos de matrícula para el grado " + grado + " son: Matrícula <span style='color: blue;'>" + formatoCadenaNumero(data.matricula) + "</span>, Otros Cobros Periódicos <span style='color: blue;'>" + formatoCadenaNumero(data.ocp) + "</span> y Pensión <span style='color: blue;'>" + formatoCadenaNumero(data.pension) + "</span>; para un total de <span style='color: blue;'>" + formatoCadenaNumero(data.pp) + "</span>.";
                                         const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
                                         intencion.respuesta = respuesta;
-                                        if (intencion) agregarMensaje("Unibot", intencion);
+                                        if (intencion) agregarMensaje("ghfbot", intencion);
                                     }
                                 });
                             }
@@ -6835,13 +6835,13 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     etiqueta_intencion = data3.etiqueta_intencion;
 
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
                                         }
                                         else {                                    
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
                                         }
                                     }
                                 });
@@ -6889,13 +6889,13 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     etiqueta_intencion = data3.etiqueta_intencion;
 
                                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                                 }
                                             });
                                         }
                                         else {                                    
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
                                         }
                                     }
                                 });
@@ -6930,13 +6930,13 @@ document.addEventListener("DOMContentLoaded", () => {
                                             etiqueta_intencion = data2.etiqueta_intencion;
 
                                             const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                            if (intencion) agregarMensaje("Unibot", intencion);
+                                            if (intencion) agregarMensaje("ghfbot", intencion);
                                         }
                                     });
                                 }
                                 else {                                    
                                     const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                    if (intencion) agregarMensaje("Unibot", intencion);
+                                    if (intencion) agregarMensaje("ghfbot", intencion);
                                 }                                
                             }
                         });
@@ -6948,7 +6948,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     submitBtn.textContent = "Enviar datos y documentos";
                     submitBtn.style.opacity = "1";
                     submitBtn.style.cursor = "pointer";
-                    agregarMensaje("Unibot", data.mensaje);
+                    agregarMensaje("ghfbot", data.mensaje);
                 }
             })
             .catch((err) => {
@@ -6958,7 +6958,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 submitBtn.style.opacity = "1";
                 submitBtn.style.cursor = "pointer";
                 console.log(err);
-                agregarMensaje("Unibot", "❌ No fue posible conectar con el servidor.");
+                agregarMensaje("ghfbot", "❌ No fue posible conectar con el servidor.");
             });
 
             //form.reset();
@@ -7225,7 +7225,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 submitBtn.textContent = "Enviar datos y documentos";
                 submitBtn.style.opacity = "1";
                 submitBtn.style.cursor = "pointer";
-                agregarMensaje("Unibot", "❌ Por favor completa todos los campos y documentos obligatorios antes de continuar. Los documentos obligatorios son aquellos que NO TIENEN el texo <span style='background: yellow; color: red;'>(solo si cambió)</span>. <strong>PARA ESTUDIANTES NUEVOS TODOS LOS ARCHIVOS SON OBLIGAGORIOS.</strong>");
+                agregarMensaje("ghfbot", "❌ Por favor completa todos los campos y documentos obligatorios antes de continuar. Los documentos obligatorios son aquellos que NO TIENEN el texo <span style='background: yellow; color: red;'>(solo si cambió)</span>. <strong>PARA ESTUDIANTES NUEVOS TODOS LOS ARCHIVOS SON OBLIGAGORIOS.</strong>");
                 return;
             }
 
@@ -7238,7 +7238,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(data => {
                 console.log(data);
                 if (data.status == "success") {                    
-                    agregarMensaje("Unibot", data.mensaje);
+                    agregarMensaje("ghfbot", data.mensaje);
                     //Se consume web service de cambio de paso
                     if (paso == "1.4") {
                         let msgControl = "paso 1.4 terminado";
@@ -7253,7 +7253,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 paso = data.siguiente_paso;
                                 etiqueta_intencion = data.etiqueta_intencion;
                                 const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                if (intencion) agregarMensaje("Unibot", intencion);
+                                if (intencion) agregarMensaje("ghfbot", intencion);
 
                                 //imagen con pasos resumen
                                 const divPasos = document.getElementById("div-pasos");
@@ -7279,7 +7279,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 paso = data.siguiente_paso;
                                 etiqueta_intencion = data.etiqueta_intencion;
                                 const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                if (intencion) agregarMensaje("Unibot", intencion);
+                                if (intencion) agregarMensaje("ghfbot", intencion);
 
                                 //imagen con pasos resumen
                                 const divPasos = document.getElementById("div-pasos");
@@ -7305,7 +7305,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 paso = data.siguiente_paso;
                                 etiqueta_intencion = data.etiqueta_intencion;
                                 const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                if (intencion) agregarMensaje("Unibot", intencion);
+                                if (intencion) agregarMensaje("ghfbot", intencion);
 
                                 //imagen con pasos resumen
                                 const divPasos = document.getElementById("div-pasos");
@@ -7331,7 +7331,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 paso = data.siguiente_paso;
                                 etiqueta_intencion = data.etiqueta_intencion;
                                 const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                if (intencion) agregarMensaje("Unibot", intencion);
+                                if (intencion) agregarMensaje("ghfbot", intencion);
 
                                 //imagen con pasos resumen
                                 const divPasos = document.getElementById("div-pasos");
@@ -7357,7 +7357,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 paso = data.siguiente_paso;
                                 etiqueta_intencion = data.etiqueta_intencion;
                                 const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                if (intencion) agregarMensaje("Unibot", intencion);
+                                if (intencion) agregarMensaje("ghfbot", intencion);
 
                                 //imagen con pasos resumen
                                 const divPasos = document.getElementById("div-pasos");
@@ -7376,7 +7376,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     submitBtn.textContent = "Enviar datos y documentos";
                     submitBtn.style.opacity = "1";
                     submitBtn.style.cursor = "pointer";
-                    agregarMensaje("Unibot", data.mensaje);
+                    agregarMensaje("ghfbot", data.mensaje);
                 }
             })
             .catch((err) => {
@@ -7386,7 +7386,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 submitBtn.style.opacity = "1";
                 submitBtn.style.cursor = "pointer";
                 console.log(err);
-                agregarMensaje("Unibot", "❌ No fue posible conectar con el servidor.");
+                agregarMensaje("ghfbot", "❌ No fue posible conectar con el servidor.");
             });
 
             //form.reset();
@@ -7541,7 +7541,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 submitBtn.textContent = "Enviar datos y documentos";
                 submitBtn.style.opacity = "1";
                 submitBtn.style.cursor = "pointer";
-                agregarMensaje("Unibot", "❌ Por favor completa todos los campos y documentos obligatorios antes de continuar. Los documentos obligatorios son aquellos que NO TIENEN el texo <span style='background: yellow; color: red;'>(solo si cambió)</span>");
+                agregarMensaje("ghfbot", "❌ Por favor completa todos los campos y documentos obligatorios antes de continuar. Los documentos obligatorios son aquellos que NO TIENEN el texo <span style='background: yellow; color: red;'>(solo si cambió)</span>");
                 return;
             }
 
@@ -7554,7 +7554,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(data => {
                 console.log(data);
                 if (data.status == "success") {                    
-                    agregarMensaje("Unibot", data.mensaje);
+                    agregarMensaje("ghfbot", data.mensaje);
                     //Se consume web service de cambio de paso
                     if (paso == "1.4") {
                         let msgControl = "paso 1.4 terminado";
@@ -7569,7 +7569,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 paso = data.siguiente_paso;
                                 etiqueta_intencion = data.etiqueta_intencion;
                                 const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                if (intencion) agregarMensaje("Unibot", intencion);
+                                if (intencion) agregarMensaje("ghfbot", intencion);
 
                                 //imagen con pasos resumen
                                 const divPasos = document.getElementById("div-pasos");
@@ -7595,7 +7595,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 paso = data.siguiente_paso;
                                 etiqueta_intencion = data.etiqueta_intencion;
                                 const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                if (intencion) agregarMensaje("Unibot", intencion);
+                                if (intencion) agregarMensaje("ghfbot", intencion);
 
                                 //imagen con pasos resumen
                                 const divPasos = document.getElementById("div-pasos");
@@ -7621,7 +7621,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 paso = data.siguiente_paso;
                                 etiqueta_intencion = data.etiqueta_intencion;
                                 const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                if (intencion) agregarMensaje("Unibot", intencion);
+                                if (intencion) agregarMensaje("ghfbot", intencion);
 
                                 //imagen con pasos resumen
                                 const divPasos = document.getElementById("div-pasos");
@@ -7647,7 +7647,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 paso = data.siguiente_paso;
                                 etiqueta_intencion = data.etiqueta_intencion;
                                 const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                if (intencion) agregarMensaje("Unibot", intencion);
+                                if (intencion) agregarMensaje("ghfbot", intencion);
 
                                 //imagen con pasos resumen
                                 const divPasos = document.getElementById("div-pasos");
@@ -7673,7 +7673,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 paso = data.siguiente_paso;
                                 etiqueta_intencion = data.etiqueta_intencion;
                                 const intencion = BASE_INTENCIONES.find(i => i.etiqueta === etiqueta_intencion);
-                                if (intencion) agregarMensaje("Unibot", intencion);
+                                if (intencion) agregarMensaje("ghfbot", intencion);
 
                                 //imagen con pasos resumen
                                 const divPasos = document.getElementById("div-pasos");
@@ -7692,7 +7692,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     submitBtn.textContent = "Enviar datos y documentos";
                     submitBtn.style.opacity = "1";
                     submitBtn.style.cursor = "pointer";
-                    agregarMensaje("Unibot", data.mensaje);
+                    agregarMensaje("ghfbot", data.mensaje);
                 }
             })
             .catch((err) => {
@@ -7702,7 +7702,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 submitBtn.style.opacity = "1";
                 submitBtn.style.cursor = "pointer";
                 console.log(err);
-                agregarMensaje("Unibot", "❌ No fue posible conectar con el servidor.");
+                agregarMensaje("ghfbot", "❌ No fue posible conectar con el servidor.");
             });
 
             //form.reset();
@@ -8006,7 +8006,7 @@ document.addEventListener("DOMContentLoaded", () => {
             archivoTexto.textContent = file.name;
 
             // Mostrar mensaje de espera
-            //agregarMensaje("Unibot", mensajeEspera);
+            //agregarMensaje("ghfbot", mensajeEspera);
         });
 
         fieldGroup.appendChild(input);

@@ -15,25 +15,19 @@ const BASE_INTENCIONES = [
                 texto: "Ver calendario",
                 valor: "descargar_calendario",
                 tipo: "d_pdf",
-                url: "https://unicab.org/calendario/calendario_2026.pdf"
+                url: "chatbot/documentos/calendario_2026.pdf"
             },
             {
                 texto: "Ver listado de documentos requeridos",
                 valor: "descargar_listado_documentos",
                 tipo: "d_pdf",
-                url: "https://unicab.org/assets/descargas/listado_documentos.pdf"
+                url: "chatbot/documentos/listado_documentos.pdf"
             },
             {
                 texto: "Ver costos colegio regular",
                 valor: "descargar_costos",
                 tipo: "d_pdf",
-                url: "https://unicab.org/assets/descargas/costos/Educacion_Regular_CIRCULAR_No_20_DE_18_DE_NOVIEMBRE_DE_2025.pdf"
-            },
-            {
-                texto: "Ver costos educación ciclos",
-                valor: "descargar_costos",
-                tipo: "d_pdf",
-                url: "https://unicab.org/assets/descargas/costos/Educacion_por_Ciclos_CIRCULAR_No_21_DE_18_DE_NOVIEMBRE_DE_2025.pdf"
+                url: "chatbot/documentos/ghf_school_costos.pdf"
             }
         ]
     },

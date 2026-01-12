@@ -31,19 +31,19 @@
     <!-- CABECERA DEL SITIO -->
     <header>        
         <div id="header1" class="header">
-            <img src="chatbot/img/Logo_blanco.png" alt="Logo" class="logo">
+            <img src="chatbot/img/logo_ghfschool3.png" alt="Logo" class="logo">
             <span class="header-titulo"> Bienvenido al Asistente Virtual de Admisiones<br>
-            del Colegio UNICAB<br>
+            del Colegio GHFSCHOOL<br>
             Para el Año Lectivo de <?php echo $a; ?>
             </span>
         </div>
         <div id="header2" class="header" style="display: none;">
-            <img src="chatbot/img/Logo_nuevo.png" alt="Logo" class="logo">
+            <img src="chatbot/img/Logo_ghfschool3.png" alt="Logo" class="logo">
             <span class="header-titulo"> Bienvenido al Asistente Virtual de Admisiones<br>
-            del Colegio UNICAB<br>
+            del Colegio GHFSCHOOL<br>
             Para el Año Lectivo de <?php echo $a; ?>
             </span>
-            <img src="chatbot/img/unibot2.png" alt="Bot" class="bot">
+            <img src="chatbot/img/ghfbot2.png" alt="Bot" class="bot">
         </div>
     </header>
 
@@ -57,7 +57,7 @@
             
             <!-- Botón "Iniciar Asistente de Admisiones" -->
             <div class="bot-inicio-inline" onclick="iniciarAsistente()">
-                <img src="chatbot/img/unibot3.png" alt="Bot" class="boton-icono">
+                <img src="chatbot/img/ghfbot1.png" alt="Bot" class="boton-icono">
                 <span class="btn-text">Iniciar Asistente de Admisiones</span>
             </div>
 
