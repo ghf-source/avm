@@ -1,6 +1,6 @@
 <?php
 	//Genera el select de los grados
-	require("../registro/docenteunicab/updreg/1cc3s4db.php");
+	require("../bd/1cc2s4db.php");
 	header("Cache-Control: no-cache, must-revalidate");
 	header("Expires: Sat, 1 Jul 2000 05:00:00 GMT");
 	//header("Refresh: 30; URL='pen_gra_upddat.php'");
@@ -55,14 +55,14 @@
 	$keys = ['id_gra','gra'];
 	$i = 0;	
 	
-	$tablae = "estudiantes";
-	$tablam = "matricula";
+	$tablae = "tbl_estudiantes";
+	$tablam = "tbl_matriculas";
 	$ct_av = 0;
 	$paso = 0;
 	$datos->paso = 1;
 	$datos->año_matricula = $fanio;
 	
-	//Se consulta el paso en el cual se encuentra el proceso del asistente virtual
+	// Se consulta el paso en el cual se encuentra el proceso del asistente virtual
 	$datos->etiqueta_intencion = "";
 	$datos->control_documentos_invalidos = 0;
 	$sql_paso = "SELECT COUNT(1) ct FROM tbl_asistente_virtual WHERE documento_estudiante = '$documento' AND a = $fanio";
