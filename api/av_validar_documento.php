@@ -83,7 +83,7 @@
 	}
 	
 	//Se hace la consulta del máximo registro en matrículas
-	$query0 = "SELECT IFNULL(max(m.idmatricula), 0) maxid FROM ".$tablae." e, ".$tablam." m WHERE e.id = m.id_estudiante AND e.n_documento = '$documento'";
+	$query0 = "SELECT IFNULL(max(m.id), 0) maxid FROM ".$tablae." e, ".$tablam." m WHERE e.id = m.id_estudiante AND e.n_documento = '$documento'";
 	//$query0 = "SELECT IFNULL(max(m.id), 0) maxid FROM ".$tablae." e, ".$tablam." m WHERE e.id = m.id_estudiante AND e.n_documento = '$documento'";
 	//echo $query0;
 	$resultado0 = $mysqli1->query($query0);
@@ -104,7 +104,7 @@
 	if($maxid == 0) {
 	    $datos->estado = "nuevo";
 	    //Se cargan los grados
-	    $query_g = "SELECT * FROM grados WHERE id > 1 AND id < 19";
+	    $query_g = "SELECT * FROM tbl_grados WHERE id > 1 AND id < 19";
 	    $resultadog = $mysqli1->query($query_g);
     	while($rowg = $resultadog->fetch_assoc()) {
     	    $valores = [$rowg['id'],$rowg['grado']];
@@ -135,10 +135,10 @@
 		//SELECT * FROM `tbl_informacion_financiera` WHERE `documento_estudiante` IN ('9397454','93974541','93974542','93974543','93974544','93974545'); 
 		
 		if($mes < 10) {
-			$sql_val_estado = "SELECT *, (YEAR(NOW()) - 1 - YEAR(fecha_ingreso)) diferencia, YEAR(now()) actual FROM ".$tablam." WHERE idMatricula = $maxid";
+			$sql_val_estado = "SELECT *, (YEAR(NOW()) - 1 - YEAR(fecha_ingreso)) diferencia, YEAR(now()) actual FROM ".$tablam." WHERE id = $maxid";
 		}
 		else {
-			$sql_val_estado = "SELECT *, (YEAR(NOW()) - YEAR(fecha_ingreso)) diferencia, YEAR(now()) actual FROM ".$tablam." WHERE idMatricula = $maxid";
+			$sql_val_estado = "SELECT *, (YEAR(NOW()) - YEAR(fecha_ingreso)) diferencia, YEAR(now()) actual FROM ".$tablam." WHERE id = $maxid";
 		}
 		//echo $sql_val_estado."<br>";
 		$res_val_estado = $mysqli1->query($sql_val_estado);
