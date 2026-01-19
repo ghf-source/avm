@@ -1,6 +1,6 @@
 <?php
 	//Genera el select de los grados
-	require("../registro/docenteunicab/updreg/1cc3s4db.php");
+	require("../bd/1cc2s4db.php");
 	header("Cache-Control: no-cache, must-revalidate");
 	header("Expires: Sat, 1 Jul 2000 05:00:00 GMT");
 	//header("Refresh: 30; URL='pen_gra_upddat.php'");
@@ -8,7 +8,7 @@
 	//https://unicab.org/avadmisiones/av_validar_documento.php 1222114726 
 	
 	// Habilitar CORS solo para tu entorno local durante desarrollo
-	header("Access-Control-Allow-Origin: http://localhost:90");
+	header("Access-Control-Allow-Origin: http://localhost");
 	header("Access-Control-Allow-Methods: POST"); //, OPTIONS
 	header("Access-Control-Allow-Headers: Content-Type");
 	
@@ -55,8 +55,8 @@
 	$keys = ['id_gra','gra'];
 	$i = 0;	
 	
-	$tablae = "estudiantes";
-	$tablam = "matricula";
+	$tablae = "tbl_estudiantes";
+	$tablam = "tbl_matriculas";
 	$ct_av = 0;
 	$paso = 0;
 	$datos->paso = 1;
