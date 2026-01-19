@@ -62,7 +62,7 @@
 	$datos->paso = 1;
 	$datos->año_matricula = $fanio;
 	
-	//Se consulta el paso en el cual se encuentra el proceso del asistente virtual
+	// Se consulta el paso en el cual se encuentra el proceso del asistente virtual
 	$datos->etiqueta_intencion = "";
 	$datos->control_documentos_invalidos = 0;
 	$sql_paso = "SELECT COUNT(1) ct FROM tbl_asistente_virtual WHERE documento_estudiante = '$documento' AND a = $fanio";
