@@ -168,7 +168,7 @@
 		else if ($estado_val == 'activo') {
 			$datos->estado = $estado_val;
 			//Se cargan los grados
-			$query_g = "SELECT * FROM grados WHERE id = ".$id_grado;
+			$query_g = "SELECT * FROM tbl_grados WHERE id = ".$id_grado;
 			$resultadog = $mysqli1->query($query_g);
 			while($rowg = $resultadog->fetch_assoc()) {
 				$valores = [$rowg['id'],$rowg['grado']];
@@ -195,7 +195,7 @@
 		else {
 			$datos->estado = "nuevo";
 			//Se cargan los grados
-			$query_g = "SELECT * FROM grados WHERE id > 1 AND id < 19";
+			$query_g = "SELECT * FROM tbl_grados WHERE id > 1 AND id < 19";
 			$resultadog = $mysqli1->query($query_g);
 			while($rowg = $resultadog->fetch_assoc()) {
 				$valores = [$rowg['id'],$rowg['grado']];
@@ -226,12 +226,12 @@
 		
 		//echo $control_antiguos;
 		if ($control_antiguos == 1 || $control_antiguos == 2 || $estado_val == "nuevo_pre_solicitud" || $estado_val == "nuevo_solicitud") {
-			$query1 = "SELECT m.estado, m.id_grado, e.nombres, e.apellidos, e.telefono_estudiante, e.email_institucional, e.estado rh, 
+			$query1 = "SELECT m.estado, m.id_grado, e.nombres, e.apellidos, e.telefono_estudiante, e.email_institucional, e.rh, 
 			e.acudiente_1, e.email_acudiente_1, e.direccion, e.telefono_acudiente_1, 
 			e.documento_responsable, td.id, td.tipo_documento, e.ciudad, e.actividad_extra, e.genero, e.documento_responsable, e.parentesco_acudiente_1, 
 			IFNULL(e.situacion_se, '') situacion_se, e.expedicion, e.fecha_nacimiento, e.direccion_estudiante, e.ciudad   
 			FROM ".$tablae." e, ".$tablam." m, tbl_tipos_documento td 
-			WHERE e.id = m.id_estudiante AND e.tipo_documento = td.id AND e.n_documento = '$documento' AND m.idmatricula = $maxid";
+			WHERE e.id = m.id_estudiante AND e.tipo_documento = td.id AND e.n_documento = '$documento' AND m.id = $maxid";
 			//$query1 = "SELECT m.estado, m.id_grado FROM ".$tablae." e, ".$tablam." m WHERE e.id = m.id_estudiante AND e.n_documento = '$documento' AND m.id = $maxid";
 			//echo $query1;
 			$resultado1 = $mysqli1->query($query1);
@@ -270,7 +270,7 @@
 					//echo "control antiguos 1";
 					if($row1['estado'] == "aprobado") {
 						//Se cargan los grados
-						$query_g = "SELECT * FROM grados WHERE id = ".$row1['id_grado']." + 1";
+						$query_g = "SELECT * FROM tbl_grados WHERE id = ".$row1['id_grado']." + 1";
 						$resultadog = $mysqli1->query($query_g);
 						while($rowg = $resultadog->fetch_assoc()) {
 							$valores = [$rowg['id'],$rowg['grado']];
@@ -281,7 +281,7 @@
 					}
 					else  {
 						//Se cargan los grados
-						$query_g = "SELECT * FROM grados WHERE id = ".$row1['id_grado'];
+						$query_g = "SELECT * FROM tbl_grados WHERE id = ".$row1['id_grado'];
 						$resultadog = $mysqli1->query($query_g);
 						while($rowg = $resultadog->fetch_assoc()) {
 							$valores = [$rowg['id'],$rowg['grado']];
@@ -294,7 +294,7 @@
 				else if ($control_antiguos == 2 || $control_antiguos == 0) {
 					//echo "control antiguos 2";
 					//Se cargan los grados
-					$query_g = "SELECT * FROM grados WHERE id > 1 AND id < 19";
+					$query_g = "SELECT * FROM tbl_grados WHERE id > 1 AND id < 19";
 					$resultadog = $mysqli1->query($query_g);
 					while($rowg = $resultadog->fetch_assoc()) {
 						$valores = [$rowg['id'],$rowg['grado']];
@@ -310,7 +310,7 @@
 	}
 	
 	//Se consulta el código de entrevista para estudiatnes que no sean nuevos
-	$sqlcodigo = "SELECT *, ifnull(id, 0) id1 FROM entrevistas WHERE documento = '$documento'";
+	$sqlcodigo = "SELECT *, ifnull(id, 0) id1 FROM tbl_entrevistas WHERE documento_est = '$documento'";
 	//echo $sqlcodigo;
 	$resultado_c = $mysqli1->query($sqlcodigo);
 	while($rowc = $resultado_c->fetch_assoc()) {
@@ -318,7 +318,7 @@
 	}
 	$id = (is_null($id)) ? 0 : $id;
 	if($id == 0) {
-	    $sqlcodigo1 = "SELECT *, ifnull(id, 0) id1 FROM tbl_pre_matricula WHERE documento_est = '$documento' AND año < $fanio";
+	    $sqlcodigo1 = "SELECT *, ifnull(id, 0) id1 FROM tbl_pre_matriculas WHERE documento_est = '$documento' AND año < $fanio";
     	//echo $sqlcodigo1;
     	$resultado_c1 = $mysqli1->query($sqlcodigo1);
     	while($rowc1 = $resultado_c1->fetch_assoc()) {
