@@ -332,7 +332,7 @@
 	
 	//Se valida si ya tiene un proceso de pre matrícula abierto
 	$datos->procesoAbierto = "NO";
-	$sql_pre_matricula = "SELECT * FROM tbl_pre_matricula WHERE documento_est = '$documento' AND año = $fanio";
+	$sql_pre_matricula = "SELECT * FROM tbl_pre_matriculas WHERE documento_est = '$documento' AND año = $fanio";
 	$resultado_pre_matricula = $mysqli1->query($sql_pre_matricula);
 	while($rowpm = $resultado_pre_matricula->fetch_assoc()) {
 	    $datos->procesoAbierto = "SI";
@@ -357,7 +357,7 @@
 	//Se consulta el estado de la entrevista
 	$entrevista = "NO";
 	$admitido = 0;
-	$sql_entrevista = "SELECT entrevista, admitido FROM tbl_pre_matricula WHERE documento_est = '$documento' AND año = $fanio";
+	$sql_entrevista = "SELECT entrevista, admitido FROM tbl_pre_matriculas WHERE documento_est = '$documento' AND año = $fanio";
 	$resultado_entrevista = $mysqli1->query($sql_entrevista);
 	while($row_entrevista = $resultado_entrevista->fetch_assoc()) {
 	    $entrevista = $row_entrevista["entrevista"];
@@ -376,7 +376,7 @@
 	$datos->intentos_programacion_entrevista = $intentos_programacion_entrevista;
 	
 	//Se valida si el código de pre-matricula corresponde al documento
-	$ct_c1 = 0;
+	/*$ct_c1 = 0;
 	$sql_c1 = "SELECT COUNT(1) ct, email_pre_mat 
 	FROM tbl_cod_pre_matricula WHERE identificacion = $documento AND codigo = '$codigo' 
 	GROUP BY email_pre_mat";
@@ -393,7 +393,7 @@
 	else {
 	    $datos->cod_prematricula = "NO";
 	}
-	$datos->email_prematricula = $email_premat;
+	$datos->email_prematricula = $email_premat;*/
 	
 	//Se busca si debe presentar evaluación de validación
 	$sql_val_ct = "SELECT COUNT(1) ct FROM tbl_validaciones WHERE documento_est = '$documento' AND año = '$fanio'";
@@ -576,7 +576,7 @@
 		WHEN 18 THEN (CASE i.pago_icfes WHEN 'SI' THEN 'PAGADO' ELSE 'PENDIENTE' END) ELSE 'NO APLICA' END estado_icfes, 
 		CASE WHEN i.deuda_anterior > 0 THEN (CASE WHEN i.pago_deuda >= i.deuda_anterior THEN 'PAGADA' ELSE 'PENDIENTE' END) ELSE 'SIN DEUDA' END estado_deuda_anterior, 
 		i.deuda_anterior - i.pago_deuda deuda_pendiente 
-		FROM tbl_informacion_financiera i, estudiantes e, matricula m 
+		FROM tbl_informacion_financiera i, tbl_estudiantes e, tbl_matriculas m 
 		WHERE i.documento_estudiante = e.n_documento AND e.id = m.id_estudiante AND e.n_documento = '$documento' AND e.nombres IS NOT NULL 
 		ORDER BY a DESC LIMIT 1";
 	//echo $sql_deuda;
