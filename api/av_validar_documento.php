@@ -634,7 +634,7 @@
 	
 	//Se consulta el grado si ya hay registro en matrícula para el nuevo año_matricula
 	$sql_grado_matricula = "SELECT m.*, g.grado 
-	FROM matricula m, grados g, estudiantes e 
+	FROM tbl_matriculas m, tbl_grados g, tbl_estudiantes e 
 	WHERE e.id = m.id_estudiante AND m.id_grado = g.id AND m.n_matricula like '%$fanio%' AND e.n_documento = '$documento'";
 	//echo $sql_grado_matricula;
 	$res_grado_matricula = $mysqli1->query($sql_grado_matricula);
@@ -660,7 +660,7 @@
 	$pension = 0;
 	$ocp = 0;
 	if ($idGrado > 0) {
-		$sql_costos_matricula = "SELECT * FROM tbl_costos_unicab WHERE a = $fanio AND id_grado = $idGrado";
+		$sql_costos_matricula = "SELECT * FROM tbl_costos WHERE a = $fanio AND id_grado = $idGrado";
 		//echo $sql_costos_matricula;
 		$res_costos_matricula = $mysqli1->query($sql_costos_matricula);
 		while ($row_costos_matricula = $res_costos_matricula->fetch_assoc()) {
@@ -683,7 +683,7 @@
 	$datos->id_medio = 1;
 	$datos->medio = "PAGINA WEB UNICAB";
 	$sql_medio = "SELECT pm.*, IFNULL(pm.id_medio, 0) id_medio1, m.medio 
-	FROM tbl_pre_matricula pm, tbl_medios_llegada m 
+	FROM tbl_pre_matriculas pm, tbl_medios_llegada m 
 	WHERE IFNULL(pm.id_medio, 0) = m.id AND pm.documento_est = '$documento' ORDER BY id DESC LIMIT 1";
 	//echo $sql_medio;
 	$res_medio = $mysqli1->query($sql_medio);
