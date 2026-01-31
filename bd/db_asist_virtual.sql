@@ -524,6 +524,19 @@ CREATE TABLE tbl_textos (
 );
 
 /*######################################################################################################*/
+DROP TABLE IF EXISTS tbl_respuestas;
+
+CREATE TABLE tbl_respuestas (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_grado int(11) NOT NULL,
+  id_materia int(11) NOT NULL,
+  id_pregunta int(11) NOT NULL,
+  a int(11) NOT NULL,
+  identificacion varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  respuesta varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  resultado varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  estado varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 /*######################################################################################################*/
 
