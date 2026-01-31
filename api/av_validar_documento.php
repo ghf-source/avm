@@ -396,7 +396,7 @@
 	$datos->email_prematricula = $email_premat;*/
 	
 	//Se busca si debe presentar evaluación de validación
-	$sql_val_ct = "SELECT COUNT(1) ct FROM tbl_validaciones WHERE documento_est = '$documento' AND año = '$fanio'";
+	/*$sql_val_ct = "SELECT COUNT(1) ct FROM tbl_validaciones WHERE documento_est = '$documento' AND año = '$fanio'";
 	//echo $sql_val_ct;
 	$exe_val_ct= $mysqli1->query($sql_val_ct);
     while($row_val_ct = $exe_val_ct->fetch_assoc()) {
@@ -428,19 +428,19 @@
         if($ct_eval_val == 1) {
             $datos->res_validacion = "APROBADO";
             //Se consulta el grado a matricular
-           /*$sql_grado_ant = "SELECT * FROM grados WHERE id = $max_idgrado + 1";
+           $sql_grado_ant = "SELECT * FROM grados WHERE id = $max_idgrado + 1";
            $exe_grado_ant = $mysqli1->query($sql_grado_ant);
             while($row_grado_ant = $exe_grado_ant->fetch_assoc()) {
                 //$datos->idgra_validacion_ant = $row_grado_ant['id'];
                 $datos->idgra_a_matricular = $row_grado_ant['id'];
                 //$datos->gra_validacion_ant = $row_grado_ant['grado'];
                 $datos->gra_a_matricular = $row_grado_ant['grado'];
-            }*/
+            }
         }
         else {
             $datos->res_validacion = "NO APROBADO";
-            /*$datos->idgra_a_matricular = $max_idgrado;
-            $datos->gra_a_matricular = $max_grado;*/
+            //$datos->idgra_a_matricular = $max_idgrado;
+            //$datos->gra_a_matricular = $max_grado;
         }
     }
 	else {
@@ -450,7 +450,7 @@
 	   $datos->res_validacion = "NA";
 	   //$datos->idgra_a_matricular = "NA";
        //$datos->gra_a_matricular = "NA";
-	}
+	}*/
 	
 	//Se valida si ya presentó la evaluación de presaberes
 	$datos->evaluacionPresaberes = "NO";
