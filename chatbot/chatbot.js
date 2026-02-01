@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const asistenteFullscreen = document.getElementById("asistente-fullscreen");
     const seccionFormulario = document.getElementById("seccion-formulario");
     const seccionChat = document.getElementById("seccion-chat");
-    const btnContinuar = document.getElementById("btn-continuar-formulario");
+    //const btnContinuar = document.getElementById("btn-continuar-formulario");
     const entradaChat = document.getElementById("entrada-chat");
     const btnEnviar = document.getElementById("btn-enviar-chat");
     const chatMensajes = document.getElementById("chat-mensajes");
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // Evento: Continuar desde formulario a chat
-    btnContinuar.addEventListener("click", () => {
+    /*btnContinuar.addEventListener("click", () => {
         const acudienteNombre = document.getElementById("acudiente-nombre").value.trim();
         const acudienteCorreo = document.getElementById("acudiente-correo").value.trim();
         const acudienteTelefono = document.getElementById("acudiente-telefono").value.trim();
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Cambiar a sección de chat
         seccionFormulario.classList.remove("activa");
         seccionChat.classList.add("activa");
-    });
+    });*/
 
     // Evento: Enviar mensaje en chat
     btnEnviar.addEventListener("click", enviarMensaje);

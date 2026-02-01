@@ -472,7 +472,7 @@
 	//Se valida si el documento no presenta entrevista ni evalución
 	$sin_entrevista = '0';
 	$sin_evaluacion = '0';
-	$sql_exento = "SELECT * FROM tbl_estudiantes_sin_ee WHERE n_documento = '$documento'";
+	/*$sql_exento = "SELECT * FROM tbl_estudiantes_sin_ee WHERE n_documento = '$documento'";
 	$exe_exento = $mysqli1->query($sql_exento);
 	while($row_exento = $exe_exento->fetch_assoc()) {
         $sin_entrevista = $row_exento['sin_entrevista'];
@@ -483,7 +483,7 @@
 	}
 	if ($sin_evaluacion == "1") {
 		$datos->evaluacionPresaberes = "SI";
-	}
+	}*/
 	
 	if ($datos->gradoSolicitado == 2 || $datos->gradoSolicitado >= 13) {
 		$datos->evaluacionPresaberes = "SI";
@@ -646,7 +646,7 @@
 	$datos->grado_matricular = $grado;
 	
 	//Se consulta el grado, en caso de que no se haya hecho todavía el nuevo registro en matrícula --- consulta anterior
-	$sql_grado = "SELECT * FROM grados WHERE id = ".$datos->id_grado_matricular;
+	$sql_grado = "SELECT * FROM tbl_grados WHERE id = ".$datos->id_grado_matricular;
 	$res_grado = $mysqli1->query($sql_grado);
 	while ($row_grado = $res_grado->fetch_assoc()) {
 		$datos->grado_matricular = $row_grado['grado'];
