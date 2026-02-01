@@ -1,12 +1,21 @@
 <?php
-    //$mysqli1 = new mysqli("localhost", "u269250303_asist_virtual", "1s3st_V3rt51l", "u269250303_asist_virtual");
-    $mysqli1 = new mysqli("localhost", "root", "Root1234*", "asist_virtual");
+    require_once('clases/devCoder/dotEnv.php');
+    (new \bd\clases\devCoder\DotEnv('.env'))->load();
 
+    if (getenv('APP_ENV') == "local") {
+        $mysqli1 = new mysqli(getenv('DB_HOST'), getenv('DB_USERNAME_L'), getenv('DB_PASSWORD_L'), getenv('DB_DATABASE_L'), getenv('DB_PORT'));
+    }
+    else if (getenv('APP_ENV') == "pro") {
+        $mysqli1 = new mysqli(getenv('DB_HOST'), getenv('DB_USERNAME_P'), getenv('DB_PASSWORD_P'), getenv('DB_DATABASE_L'));
+    }
+    
 	if(mysqli_connect_error()) {
-         die("Error de conexión: " . $mysqli1->connect_error);         
+        echo mb_convert_encoding("Error al conectar con base de datos:", 'UTF-8'),mysqli_connect_error();
+        //die("Error de conexión: " . $mysqli1->connect_error);
+        exit();
     }
     else {
-        //echo "Conección exitosa";
+        //echo "Conexión exitosa";
     }
     
     $mysqli1->set_charset("utf8");

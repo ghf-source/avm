@@ -1,6 +1,6 @@
 <?php
 
-namespace bd\clases\DevCoder;
+namespace bd\clases\devCoder;
 
 class DotEnv
 {
