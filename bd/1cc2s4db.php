@@ -1,12 +1,12 @@
 <?php
     require_once('clases/devCoder/dotEnv.php');
-    (new \bd\clases\devCoder\DotEnv('.env'))->load();
+    (new \bd\clases\devCoder\DotEnv('../.env'))->load();
 
     if (getenv('APP_ENV') == "local") {
         $mysqli1 = new mysqli(getenv('DB_HOST'), getenv('DB_USERNAME_L'), getenv('DB_PASSWORD_L'), getenv('DB_DATABASE_L'), getenv('DB_PORT'));
     }
     else if (getenv('APP_ENV') == "pro") {
-        $mysqli1 = new mysqli(getenv('DB_HOST'), getenv('DB_USERNAME_P'), getenv('DB_PASSWORD_P'), getenv('DB_DATABASE_L'));
+        $mysqli1 = new mysqli(getenv('DB_HOST'), getenv('DB_USERNAME_P'), getenv('DB_PASSWORD_P'), getenv('DB_DATABASE_P'));
     }
     
 	if(mysqli_connect_error()) {

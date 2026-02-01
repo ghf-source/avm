@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const asistenteFullscreen = document.getElementById("asistente-fullscreen");
-    const seccionFormulario = document.getElementById("seccion-formulario");
     const seccionChat = document.getElementById("seccion-chat");
-    //const btnContinuar = document.getElementById("btn-continuar-formulario");
     const entradaChat = document.getElementById("entrada-chat");
     const btnEnviar = document.getElementById("btn-enviar-chat");
     const chatMensajes = document.getElementById("chat-mensajes");
@@ -99,44 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
         header2.style.display = "flex";
 
         // Cambiar a sección de chat
-        seccionFormulario.classList.remove("activa");
         seccionChat.classList.add("activa");
     };
-
-    // Evento: Continuar desde formulario a chat
-    /*btnContinuar.addEventListener("click", () => {
-        const acudienteNombre = document.getElementById("acudiente-nombre").value.trim();
-        const acudienteCorreo = document.getElementById("acudiente-correo").value.trim();
-        const acudienteTelefono = document.getElementById("acudiente-telefono").value.trim();
-        const tipoEstudiante = document.querySelector('input[name="tipo-estudiante"]:checked')?.value;
-        const estudianteNombres = document.getElementById("estudiante-nombres").value.trim();
-        const estudianteApellidos = document.getElementById("estudiante-apellidos").value.trim();
-        const estudianteDocumento = document.getElementById("estudiante-documento").value.trim();
-
-        // Validación básica
-        if (!acudienteNombre || !acudienteCorreo || !acudienteTelefono ||
-            !tipoEstudiante || !estudianteNombres || !estudianteApellidos || !estudianteDocumento) {
-            alert("Por favor, completa todos los campos.");
-            return;
-        }
-
-        // Guardar datos (opcional)
-        guardarDatosIniciales({
-            acudiente: { acudienteNombre, acudienteCorreo, acudienteTelefono },
-            estudiante: { tipoEstudiante, estudianteNombres, estudianteApellidos, estudianteDocumento }
-        });
-
-        // Mostrar mensaje de bienvenida en chat
-        //agregarMensaje("ghfbot", "¡Hola! Soy tu asistente de admisiones. ¿En qué puedo ayudarte?");
-        agregarMensaje("ghfbot", {
-            respuesta: "¡Hola! Soy tu asistente de admisiones. ¿En qué puedo ayudarte?",
-            botones: null // No hay botones aquí
-        });
-
-        // Cambiar a sección de chat
-        seccionFormulario.classList.remove("activa");
-        seccionChat.classList.add("activa");
-    });*/
 
     // Evento: Enviar mensaje en chat
     btnEnviar.addEventListener("click", enviarMensaje);
@@ -354,7 +316,18 @@ document.addEventListener("DOMContentLoaded", () => {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ documento: documento })
                     })
-                    .then(r => r.json()) // ← Texto → Objeto
+                    //.then(r => r.json()) // ← Texto → Objeto
+                    .then(async r => {
+                        const text = await r.text(); // lee la respuesta como texto crudo
+                        //console.log(text); // aquí verás lo que realmente devolvió el servidor
+                        try {
+                            const data = JSON.parse(text); // intenta parsear a JSON
+                            return data;
+                        } catch (e) {
+                            //console.log("⚠️ La respuesta no es JSON válido:");
+                            throw e; // lanza el error para que caiga en el catch
+                        }
+                    })
                     .then(data => {
                         console.log(data);                        
                         if (data.status == "success") {
@@ -6439,28 +6412,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }).catch(err => console.log("Error al guardar:", err));
     }
 
-    // Función: Manejar selección de pago
-    function manejarSeleccionPago(valor) {
-        let respuesta = "";
-
-        switch (valor) {
-            case "pago_unico":
-                respuesta = "✅ Has seleccionado: Pago único de $200. ¿Deseas proceder con el pago ahora?";
-                break;
-            case "pago_3_cuotas":
-                respuesta = "✅ Has seleccionado: 3 cuotas de $70 cada una. Total: $210. ¿Confirmas esta opción?";
-                break;
-            case "pago_6_cuotas":
-                respuesta = "✅ Has seleccionado: 6 cuotas de $37 cada una. Total: $222. ¿Te parece bien?";
-                break;
-            default:
-                respuesta = "Gracias por tu selección.";
-        }
-
-        // Mostrar confirmación
-        agregarMensaje("ghfbot", { respuesta: respuesta });
-    }
-
     // Generar formulario dinámico
     function generarFormularioConDatos(datos, contenedorPadre, seleccioneGrado) {
         console.log(datos);
@@ -8283,32 +8234,6 @@ document.addEventListener("DOMContentLoaded", () => {
             boton.style.cursor = habilitar ? "pointer" : "not-allowed";
         }        
     }
-
-    /*function sonTodosValidos() {
-        const inputs = document.querySelectorAll("input, select, textarea");
-        for (let input of inputs) {
-            if (input.hasAttribute("data-validar")) {
-                const id = input.id;
-                const tipo = input.getAttribute("data-validar");
-                let valido = true;
-
-                if (tipo === "texto") {
-                    valido = validar_texto(id, input.previousElementSibling.textContent);
-                } else if (tipo === "numero") {
-                    valido = validar_numero(id, input.previousElementSibling.textContent);
-                } else if (tipo === "email") {
-                    valido = validar_email(id, input.previousElementSibling.textContent);
-                } else if (tipo === "fecha") {
-                    valido = validar_fecha(id, input.previousElementSibling.textContent);
-                } else if (input.tagName === "SELECT") {
-                    valido = input.value !== "0"; // ← Valida que no esté en "Seleccione..."
-                }
-
-                if (!valido) return false;
-            }
-        }
-        return true;
-    }*/
 
     function sonTodosValidos() {
         const campos = document.querySelectorAll("[data-validar]");
