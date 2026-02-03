@@ -36,7 +36,7 @@
 	//echo "control";
 	
 	//Se buscan los datos del estudiante y acudiente
-	$sql_estudiante = "SELECT * FROM estudiantes WHERE n_documento = '$documento_est'";
+	$sql_estudiante = "SELECT * FROM tbl_estudiantes WHERE n_documento = '$documento_est'";
 	$res_estudiante = $mysqli1->query($sql_estudiante);
 	while($row_estudiante = $res_estudiante->fetch_assoc()){
 		$nombre_est = $row_estudiante['nombres']." ".$row_estudiante['apellidos'];
@@ -61,7 +61,7 @@
 	
 	if ($ct == 0) {
 		$sql_ins = "INSERT INTO tbl_entrevistas (id_psicologo, fecha, hora, documento_est, nombre_est, generar_contrato) VALUES 
-			($id_psicologo, '$fecha', '$hora', '$documento_est', '$nombre_est', 'NO')";
+			('$id_psicologo', '$fecha', '$hora', '$documento_est', '$nombre_est', 'NO')";
 		//echo $sql_ins;
 		$exe_ins = $mysqli1->query($sql_ins);
 		

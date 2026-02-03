@@ -866,7 +866,7 @@
 			}
 			else {
 				$sql_av = "INSERT INTO tbl_asistente_virtual (documento_estudiante, a, paso, antiguo, control_antiguos, nuevo, id_grado, con_deuda, deuda)  VALUES 
-				('$documento', $fanio, '4.2', 0, $datos->control_antiguos, 1, $idGrado, 0, $datos->deuda_pendiente) 
+				('$documento', '$fanio', '4.2', 0, $datos->control_antiguos, 1, $idGrado, 0, $datos->deuda_pendiente) 
 				ON DUPLICATE KEY UPDATE paso = VALUES(paso), antiguo = VALUES(antiguo), control_antiguos = VALUES(control_antiguos), 
 				nuevo = VALUES(nuevo), id_grado = VALUES(id_grado), con_deuda = VALUES(con_deuda), deuda = VALUES(deuda)";
 				$datos->paso = '4.2';
@@ -875,7 +875,7 @@
 		}
 		else if ($datos->estado == "nuevo") {
 			$sql_av = "INSERT INTO tbl_asistente_virtual (documento_estudiante, a, paso, antiguo, control_antiguos, nuevo, id_grado, con_deuda, deuda)  VALUES 
-			('$documento', $fanio, '5.2', 0, $datos->control_antiguos, 1, $idGrado, 0, $datos->deuda_pendiente) 
+			('$documento', '$fanio', '5.2', 0, $datos->control_antiguos, 1, $idGrado, 0, $datos->deuda_pendiente) 
 			ON DUPLICATE KEY UPDATE paso = VALUES(paso), antiguo = VALUES(antiguo), control_antiguos = VALUES(control_antiguos), 
 			nuevo = VALUES(nuevo), id_grado = VALUES(id_grado), con_deuda = VALUES(con_deuda), deuda = VALUES(deuda)";
 			$datos->paso = '5.2';
