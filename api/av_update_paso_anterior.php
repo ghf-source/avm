@@ -50,7 +50,7 @@
 	
 	//Se consulta el paso actual
 	$paso_actual = "";
-	$sql_paso_actual = "SELECT * FROM tbl_asistente_virtual WHERE documento_estudiante = '$documento' AND a = $año";
+	$sql_paso_actual = "SELECT * FROM tbl_asistente_virtual WHERE documento_estudiante = '$documento' AND a = '$año'";
 	$exe_paso_actual = $mysqli1->query($sql_paso_actual);
     while($row_paso_actual = $exe_paso_actual->fetch_assoc()) {
         $paso_actual = $row_paso_actual['paso'];
